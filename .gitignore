@@ -15,5 +15,5 @@
 
 /node_modules
 /yarn-error.log
-
+schema.rb
 .byebug_history

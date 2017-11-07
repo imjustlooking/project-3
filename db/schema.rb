@@ -21,7 +21,43 @@ ActiveRecord::Schema.define(version: 20171106102429) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "items", force: :cascade do |t|
+    t.bigint "stock_id"
+    t.integer "quantity_ordered"
+    t.bigint "shoppinglist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shoppinglist_id"], name: "index_items_on_shoppinglist_id"
+    t.index ["stock_id"], name: "index_items_on_stock_id"
+  end
+
+  create_table "shoppinglists", force: :cascade do |t|
+    t.string "name_shoppinglist"
+    t.datetime "paid_on"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shoppinglists_on_user_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "name_item"
+    t.bigint "barcode"
+    t.decimal "price"
+    t.integer "quantity"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_stocks_on_category_id"
+  end
+
+>>>>>>> 7585d472beb9b7376538446ab3185e2c530cf6a4
   create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
+    t.integer "phoneNumber"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

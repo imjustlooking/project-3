@@ -1,7 +1,11 @@
 class AddDeviseToUsers < ActiveRecord::Migration[5.1]
-  def self.up
+  def change
     create_table :users do |t|
+      #custom fields
       t.string :name
+      t.text :address
+      t.integer :phoneNumber
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
