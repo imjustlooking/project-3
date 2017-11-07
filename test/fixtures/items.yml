@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  stock: one
+  stock_id: one
   quantity_ordered: 1
-  shoppinglist: one
+  shoppinglist_id: one
 
 two:
-  stock: two
+  stock_id: two
   quantity_ordered: 1
-  shoppinglist: two
+  shoppinglist_id: two

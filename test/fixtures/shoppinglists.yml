@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  paid_on: 2017-11-06 18:40:16
+  name_shoppinglist: MyString
+  paid_on: 2017-11-07 14:19:28
+  user_id: one
 
 two:
-  user: two
-  paid_on: 2017-11-06 18:40:16
+  name_shoppinglist: MyString
+  paid_on: 2017-11-07 14:19:28
+  user_id: two
