@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171107062231) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name_item"
-    t.bigint "barcode"
+    t.integer "barcode"
     t.decimal "price"
     t.integer "quantity"
     t.bigint "category_id"
