@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171106102429) do
     t.string "name"
     t.text "address"
     t.integer "phoneNumber"
+    t.boolean "type_admin"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
