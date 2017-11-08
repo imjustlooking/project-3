@@ -54,15 +54,16 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-          <!-- <img class=“d-block img-fluid” src=“../../assets/1.jpeg” style = “margin:auto; height: 550px” alt=“First slide”> -->
-          <!-- <img class="d-block img-fluid" src= "<%= image_tag '1.jpeg' %>" style = "margin:auto; height: 550px" alt="First slide"> -->
-          <%= image_tag '1.jpeg' %>
+            <%= image_tag('1.jpeg', size: "200x300", alt: "First slide", style: 'display: block; margin: auto; width: 50%; height: 50%') %>
+
         </div>
         <div class="carousel-item">
-          <img class="d-block img-fluid" src="../../assets/images/2.jpg" style = "margin:auto; height: 550px" alt="Second slide">
+          <%= image_tag('2.jpg', size: "200x300", alt: "First slide", style: 'display: block; margin: auto; width: 50%; height: 50%') %>
+
         </div>
         <div class="carousel-item">
-          <img class="d-block img-fluid" src="../../assets/images/3.jpeg" style = "margin:auto; height: 550px" alt="Third slide">
+          <%= image_tag('3.jpeg', size: "200x300", alt: "First slide", style: 'display: block; margin: auto; width: 50%; height: 50%') %>
+          
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
