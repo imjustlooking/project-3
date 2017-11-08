@@ -5,7 +5,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :address
       t.integer :phoneNumber
-      
+      t.boolean :type_admin
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
