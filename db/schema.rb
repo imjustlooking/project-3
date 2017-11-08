@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106102429) do
+ActiveRecord::Schema.define(version: 20171107062231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 20171106102429) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "items", force: :cascade do |t|
     t.bigint "stock_id"
     t.integer "quantity_ordered"
@@ -53,7 +51,6 @@ ActiveRecord::Schema.define(version: 20171106102429) do
     t.index ["category_id"], name: "index_stocks_on_category_id"
   end
 
->>>>>>> 7585d472beb9b7376538446ab3185e2c530cf6a4
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "address"
@@ -73,4 +70,8 @@ ActiveRecord::Schema.define(version: 20171106102429) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "shoppinglists"
+  add_foreign_key "items", "stocks"
+  add_foreign_key "shoppinglists", "users"
+  add_foreign_key "stocks", "categories"
 end
