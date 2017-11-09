@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'items/create'
+
   root 'main#index'
 
 devise_for :users, path: '', path_names: {

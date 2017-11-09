@@ -10,6 +10,7 @@ before_action :authenticate_user!, except: :index
     redirect_to action: "new"
   end
 
+
   def new
     @new_stock = Stock.new
   end

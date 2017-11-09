@@ -1,7 +1,10 @@
 <h1>Edit your shopping list</h1>
 
-<ul>
-<% @shoppinglist.items.each do |item| %>
-<li><%= item.stock.name_item %></li>
+<%= @shoppinglist.inspect %>
+
+
+<%= form_for @shoppinglist do |f| %>
+  <%= f.label('Shopping List name:') %>
+  <%= f.text_field :name_shoppinglist, placeholder: @shoppinglist.name_shoppinglist %>
+  <%= submit_tag "Create" %>
 <% end %>
-</ul>
