@@ -1,3 +1,28 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Roboto+Condensed');
+
+$primary-bg: #B5DFCA;
+$font-color: #3FA34D;
+
+$title-font: 'Libre Barcode 39 Text', cursive;
+$body-font: 'Roboto Condensed', sans-serif;
+
+#mainTitle {
+  font-family: $title-font;
+  font-size: 45px;
+
+}
+
+
+body{
+  // background:  $primary-bg;
+  font-family: $body-font;
+
+}
+
+.nav-link{
+  color:$font-color;
+}
