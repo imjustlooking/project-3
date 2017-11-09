@@ -24,6 +24,7 @@
       <li class="nav-item">
         <li class="nav-item nav-link"><%= link_to "Stocks", stocks_path %>
       </li>
+<%#       <li class="nav-link"><%= link_to "Barcode scan",  %>
       <% unless user_signed_in? %>
       <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
       <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path %></li>
@@ -32,7 +33,7 @@
       <li class="nav-link"><%= link_to "View Your Shopping lists", user_shoppinglists_path(current_user) %></li>
       <li class="nav-item nav-link"><a href="/edit"><%= current_user.name %></a></li>
       <li class="nav-item nav-link">
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </li>
       <% end %>
 
@@ -50,11 +51,11 @@
       <pre><%= params %></pre>
     <%= yield %>
     </div>
-    <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
+    <%# <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
         <div class="container-fluid p-0 p-md-2">
           <p class="text-center">Put together by <a href="https://github.com/imjustlooking" target="_blank" rel="noopener">Gab's angels</a>, with <a href="http://getbootstrap.com/" target="_blank">Bootstrap 4</a> </p>
         </div>
-    </footer>
+    </footer>  TODO: Footer to be adjusted%>
 
   </body>
 </html>
