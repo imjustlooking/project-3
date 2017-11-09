@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  # get 'shoppinglists/index'
-
   root 'main#index'
 
 devise_for :users, path: '', path_names: {
@@ -13,6 +10,9 @@ devise_for :users, path: '', path_names: {
   get '/users/:id', to: 'users#show'
 
   resources :users do
-    resources :shoppinglists 
+    resources :shoppinglists
   end
+
+  #resources routes
+  resources :stocks
 end

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <h1>Add New Stock</h1>
+
+    <%= form_for [@new_stock] do |f| %>
+
+    <div class="field">
+      <%= f.label("Name:") %>
+      <%= f.text_field :name_item %>
+    </div>
+
+    <div class="field">
+      <%= f.label("Barcode:") %>
+      <%= f.number_field :barcode %>
+    </div>
+
+    <div class="field">
+      <%= f.label("Price:") %>
+      <%= f.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= f.label("Quantity:") %>
+      <%= f.number_field :quantity %>
+    </div>
+
+    <div class="field">
+      <%= f.label("Category:") %>
+      <%= f.number_field :category_id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit("Add New Stocks", class: 'btn') %>
+    </div>
+    <% end %>
+  </div>
+</div>

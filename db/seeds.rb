@@ -27,10 +27,18 @@
 #     category_id: 1
 #   )
 # end
-# 
+#
 # 2.times do
 #   Shoppinglist.create(
 #     user_id: 1,
 #     paid_on: Faker::Time.between(DateTime.now - 1, DateTime.now)
 #   )
 # end
+
+Stock.create(
+    name_item: "Kellogg's Conflakes 150g",
+    barcode: 8852756303056,
+    price: 2.99  ,
+    quantity: 99,
+    category_id: 1
+  )

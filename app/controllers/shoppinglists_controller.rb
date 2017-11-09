@@ -4,10 +4,11 @@ class ShoppinglistsController < ApplicationController
   end
 
   def show
-  end
+
+  end 
   def create
     current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
-    render json: current_user
+    redirect_to action: "show", id: params[:id]
   end
   def new
     @new_shoppinglist = Shoppinglist.new
