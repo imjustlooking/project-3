@@ -1,0 +1,13 @@
+<h1>Your shopping list</h1>
+
+<ul>
+  <% @shoplists.each do |shoplist| %>
+  <li> <%= shoplist.name_shoppinglist %>
+  <div class="actions">
+    <%= link_to 'view', user_shoppinglist_path(:id => shoplist.id) %>
+    <%= link_to 'edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
+    <%= link_to 'delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, remote: true %>
+  </div>
+</li>
+  <% end %>
+</ul>
