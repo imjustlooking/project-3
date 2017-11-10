@@ -1,8 +1,8 @@
 <h1>Our Offerings</h1>
 
-<ul>
-  <% @all_stocks.each do |stock| %>
-  <li><%= stock.name_item %></li>
-  <%= button_to "Add to shoppinglist", action: "new" %>
-  <% end %>
-</ul>
+
+<% if @stocks.present? %>
+  <%= render "stock" %>
+<% else %>
+  <p>Sorry we do not have this currently.</p>
+<% end %>

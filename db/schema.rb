@@ -42,9 +42,8 @@ ActiveRecord::Schema.define(version: 20171107062231) do
 
   create_table "stocks", force: :cascade do |t|
     t.string "name_item"
-    t.bigint "barcode"
+    t.string "barcode"
     t.decimal "price"
-    t.integer "quantity"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+#important???
 gem 'pry'
 #setting up devise
 gem 'devise'

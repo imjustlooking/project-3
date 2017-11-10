@@ -1,0 +1,6 @@
+<ul>
+  <% @stocks.each do |stock| %>
+  <li><%= stock.name_item %></li>
+  <%= button_to "Add to shoppinglist", action: "new" %>
+  <% end %>
+</ul>

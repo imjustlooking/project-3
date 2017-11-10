@@ -4,9 +4,9 @@
   <% @shoplists.each do |shoplist| %>
   <li> <%= shoplist.name_shoppinglist %>
   <div class="actions">
-    <%= link_to 'view', user_shoppinglist_path(:id => shoplist.id) %>
-    <%= link_to 'edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
-    <%= link_to 'delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, remote: true %>
+    <%= link_to 'View', user_shoppinglist_path(:id => shoplist.id) %>
+    <%= link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
+    <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, remote: true %>
   </div>
 </li>
   <% end %>

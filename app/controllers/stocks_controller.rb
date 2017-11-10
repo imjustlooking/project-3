@@ -2,7 +2,16 @@ class StocksController < ApplicationController
 before_action :authenticate_user!, except: :index
 
   def index
-    @all_stocks = Stock.all
+    @stocks = Stock.all
+    if params[:term]
+      @stocks = Stock.search(params[:term])
+    else
+      @stocks = Stock.all
+    end
+  end
+
+  def stock_params
+    params.require(:stock).permit(:name_item, :barcode)
   end
 
   def create
@@ -10,6 +19,9 @@ before_action :authenticate_user!, except: :index
     redirect_to action: "new"
   end
 
+
+  def show
+  end
 
   def new
     @new_stock = Stock.new
