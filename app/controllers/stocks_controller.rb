@@ -2,12 +2,7 @@ class StocksController < ApplicationController
 before_action :authenticate_user!, except: :index
 
   def index
-    @stocks = Stock.all
-    if params[:term]
-      @stocks = Stock.search(params[:term])
-    else
-      @stocks = Stock.all
-    end
+    @stocks = Stock.search(params[:term])
   end
 
   def stock_params
