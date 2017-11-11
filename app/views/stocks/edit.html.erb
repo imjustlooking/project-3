@@ -1,0 +1,16 @@
+<h1>Edit stock details</h1>
+
+<% @stock.inspect %>
+
+<%= form_for( :stock , :html => {:class => "form-horizontal", :role => "form"}, url: stock_path, method: :put) do |f| %>
+
+  <%= f.label 'Stock name:' %>
+  <%= f.text_field :name_item, placeholder: @stock.name_item, class:'form-control' %>
+
+  <%= f.label 'Stock price:' %>
+  <%= f.text_field :price, placeholder: @stock.price, class:'form-control' %>
+
+  <%= f.label 'Stock barcode:' %>
+  <%= f.text_field :barcode, placeholder: @stock.barcode, class:'form-control' %>
+  <%= submit_tag "Save changes", class:"btn btn-primary" %>
+<% end %>

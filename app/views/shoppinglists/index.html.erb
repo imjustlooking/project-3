@@ -6,8 +6,10 @@
   <div class="actions">
     <%= link_to 'View', user_shoppinglist_path(:id => shoplist.id) %>
     <%= link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
-    <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, remote: true %>
+    <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
   </div>
 </li>
   <% end %>
 </ul>
+
+<%# link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
