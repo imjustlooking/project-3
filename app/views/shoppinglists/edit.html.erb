@@ -4,7 +4,7 @@
 <% @shoppinglist.inspect %>
 
 
-<%= form_for( :shoppinglist , :html => {:class => "form-horizontal", :role => "form"}, url: user_shoppinglist_path, method: :put) do |f| %>
+<%= form_for( :shoppinglist , url: user_shoppinglist_path, method: :put) do |f| %>
   <%= f.label('Shopping List name:') %>
   <%= f.text_field :name_shoppinglist, placeholder: @shoppinglist.name_shoppinglist, class: 'form-control' %>
   <%= submit_tag "Save changes", class:"btn btn-primary"%>

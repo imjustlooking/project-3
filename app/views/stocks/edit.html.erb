@@ -2,7 +2,7 @@
 
 <% @stock.inspect %>
 
-<%= form_for( :stock , :html => {:class => "form-horizontal", :role => "form"}, url: stock_path, method: :put) do |f| %>
+<%= form_for( :stock, url: stock_path, method: :put) do |f| %>
 
   <%= f.label 'Stock name:' %>
   <%= f.text_field :name_item, placeholder: @stock.name_item, class:'form-control' %>
