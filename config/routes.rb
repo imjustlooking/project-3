@@ -17,4 +17,6 @@ devise_for :users, path: '', path_names: {
 
   #resources routes
   resources :stocks
+
+  get '/stocks/show', to: 'stocks#show'
 end

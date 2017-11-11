@@ -38,9 +38,10 @@
       <% end %>
 
     </ul>
-    <%= form_tag(stocks_path, method: :get, remote: true) do %>
+    <%= form_tag(stocks_path, method: :get) do %>
       <%= text_field_tag :term, params[:term], placeholder: "Search By Item Name or Barcode"%>
       <%= submit_tag 'Search', name: nil %>
+      <%= button_to "Barcode Search", stocks_show_path, method: :get%>
     <% end %>
 
 <!-- <ul class="nav"> -->
