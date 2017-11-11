@@ -35,10 +35,13 @@
 #   )
 # end
 
-Stock.create(
-    name_item: "Kellogg's Conflakes 150g",
-    barcode: 8852756303056,
-    price: 2.99  ,
-    quantity: 99,
-    category_id: 1
+# Stock.create(
+#     name_item: "Kellogg's Conflakes 150g",
+#     barcode: 8852756303056,
+#     price: 2.99,
+#     category_id: 1
+#   )
+
+  Category.create(
+    name_category: "organic"
   )

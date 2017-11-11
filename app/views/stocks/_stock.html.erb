@@ -1,6 +1,9 @@
 <ul>
   <% @stocks.each do |stock| %>
-  <li><%= stock.name_item %></li>
+  <li><%= stock.name_item%> $<%= stock.price%></li>
+
   <%= button_to "Add to shoppinglist", action: "new" %>
+  <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
+  <%= link_to "Delete", stock_path(:id => stock.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
   <% end %>
 </ul>
