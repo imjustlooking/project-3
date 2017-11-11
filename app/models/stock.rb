@@ -3,7 +3,11 @@ class Stock < ApplicationRecord
   has_many :items
 
   def self.search(term)
-    where("name_item ILIKE ?", "%#{term}%")
-    where("barcode LIKE ?", "%#{term}%")
+    if term
+      where("name_item || barcode ILIKE ?", "%#{term}%")
+    else
+      all
+    end
   end
+
 end

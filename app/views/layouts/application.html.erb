@@ -38,7 +38,7 @@
       <% end %>
 
     </ul>
-    <%= form_tag(stocks_path, method: :get) do %>
+    <%= form_tag(stocks_path, method: :get, remote: true) do %>
       <%= text_field_tag :term, params[:term], placeholder: "Search By Item Name or Barcode"%>
       <%= submit_tag 'Search', name: nil %>
     <% end %>
