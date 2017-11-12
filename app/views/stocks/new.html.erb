@@ -10,11 +10,6 @@
     </div>
 
     <div class="field">
-      <%= f.label("Barcode:") %>
-      <%= f.text_field :barcode %>
-    </div>
-
-    <div class="field">
       <%= f.label("Price:") %>
       <%= f.text_field :price %>
     </div>
@@ -22,6 +17,18 @@
     <div class="field">
       <%= f.label("Category:") %>
       <%= f.number_field :category_id %>
+    </div>
+
+    <div class="field">
+      <div class='container' style='position:relative'>
+        <video id="gum-local" autoplay playsinline style='opacity:0.8; object-fit: contain;'></video>
+        <canvas class="drawingBuffer" width="640" height="480" style='position:absolute; top:0px; left:0px; float:left; object-fit: contain;'></canvas>
+      </div>
+      <button id ="startScan" type="button">Start input</button>
+      <button id="stopScan" type="button">Stop input</button>
+
+      <%= f.label("Barcode:") %>
+      <%= f.text_field :barcode, id: 'barcodeField'%>
     </div>
 
     <div class="actions">
