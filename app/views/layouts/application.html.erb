@@ -18,13 +18,8 @@
       <li class="nav-item active" >
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" style= "color:black;">
-        <li class="nav-link" href="#">Link</a>
-      </li>
-      <a class="nav-item" >
-        <li class="nav-item nav-link"><%= link_to "Stocks", stocks_path %>
-      </li>
-<%#       <li class="nav-link"><%= link_to "Barcode scan",  %>
+      <li class="nav-item nav-link"><%= link_to "Stocks", stocks_path %></li>
+      <li class="nav-link"><%= link_to "Barcode scan", stocks_show_path  %></li>
       <% unless user_signed_in? %>
       <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
       <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path %></li>
@@ -38,15 +33,15 @@
       <% end %>
 
     </ul>
-    <%= form_tag(stocks_path, method: :get, remote: true) do %>
+    <%= form_tag(stocks_path, method: :get) do %>
       <%= text_field_tag :term, params[:term], placeholder: "Search By Item Name or Barcode"%>
       <%= submit_tag 'Search', name: nil %>
     <% end %>
-
-<!-- <ul class="nav"> -->
-<!-- </ul> -->
-  </div>
+    <%= button_to 'Barcode', stocks_show_path, method: :get %>
+    <!-- Button trigger modal -->
 </nav>
+
+<!-- start of content -->
     <div class="container" >
       <pre><%= params %></pre>
     <%= yield %>

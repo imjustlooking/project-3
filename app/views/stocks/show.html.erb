@@ -7,8 +7,8 @@
     <button id ="startScan" type="button">Start input</button>
     <button id="stopScan" type="button">Stop input</button>
 
-    <form action="#">
-      <label for="barcode">Barcode</label>
-      <input id="barcodeField" type="number" name="barcode"><br>
-      <input type="submit" value="Submit">
-    </form>
+    <%= form_tag(stocks_path, method: :get) do %>
+      <%= label_tag 'barcode' %>
+      <%= text_field_tag :term, params[:term], id: 'barcodeField'%>
+      <%= submit_tag 'Search', name: nil %>
+    <% end %>

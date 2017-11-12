@@ -3,7 +3,9 @@
   <li><%= stock.name_item%> $<%= stock.price%></li>
 
   <%= button_to "Add to shoppinglist", action: "new" %>
-  <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
-  <%= link_to "Delete", stock_path(:id => stock.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
+    <% if user_signed_in? && current_user.type_admin %>
+      <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
+      <%= link_to "Delete", stock_path(:id => stock.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
+    <% end %>
   <% end %>
 </ul>

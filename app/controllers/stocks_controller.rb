@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-before_action :authenticate_user!, except: :index
+before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 
   def index
     @stocks = Stock.search(params[:term])
@@ -14,8 +14,8 @@ before_action :authenticate_user!, except: :index
     redirect_to action: "index"
   end
 
-
   def show
+
   end
 
   def new

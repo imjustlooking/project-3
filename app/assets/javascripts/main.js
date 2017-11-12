@@ -1,8 +1,4 @@
-console.log('entering main');
 $(document).on('turbolinks:load', function () {
-  console.log('starting ...');
-  $('.stocks.show').ready(function(){
-    console.log('success');
     var results = {}
     var video = $('#gum-local')[0]
     var constraints = { audio: false, video: true }
@@ -103,5 +99,5 @@ $(document).on('turbolinks:load', function () {
       console.log('start')
       barcodeStart()
     })
-  })
+
 })

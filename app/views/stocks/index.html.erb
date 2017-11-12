@@ -1,5 +1,7 @@
 <h1>Stock</h1>
-<%= link_to 'Add new stock', new_stock_path  %>
+<% if user_signed_in? && current_user.type_admin %>
+  <%= link_to 'Add new stock', new_stock_path  %>
+<% end %>
 
 <% if @stocks.present? %>
   <%= render "stock" %>

@@ -5,3 +5,9 @@
 <li><%= item.stock.name_item %></li>
 <% end %>
 </ul>
+
+
+<%= form_for( @shoppinglist , url:user_shoppinglist_path, method: :put) do |f| %>
+  <%= f.hidden_field :paid_on, value: DateTime.now.to_s %>
+  <%= submit_tag "Pay Now", class:"btn btn-primary"%>
+<% end %>
