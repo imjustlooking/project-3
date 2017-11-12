@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   #root routes
   root 'main#index'
 
@@ -30,4 +32,6 @@ Rails.application.routes.draw do
   resources :items
   # post '/items/create', to: 'items#create'
   get '/items/add', to: 'items#create'
+
+   resources :charges, only: [:new, :create]
 end
