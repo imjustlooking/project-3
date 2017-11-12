@@ -12,35 +12,41 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+  <a class="navbar-brand" id= "mainTitle" href="/">Smart Mart</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
-    <a class="navbar-brand" id= "mainTitle" href="/">Smart Mart</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" >
-      <li class="nav-item active" >
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item nav-link"><%= link_to "Stocks", stocks_path %></li>
-      <li class="nav-link"><%= link_to "Barcode scan", stocks_show_path  %></li>
-      <% unless user_signed_in? %>
-      <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
-      <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path %></li>
-      <% else %>
-      <li class="nav-link"><%= link_to "Create shopping list", new_user_shoppinglist_path(current_user) %></li>
-      <li class="nav-link"><%= link_to "View Your Shopping lists", user_shoppinglists_path(current_user) %></li>
-      <li class="nav-item nav-link"><a href="/edit"><%= current_user.name %></a></li>
-      <li class="nav-item nav-link">
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      </li>
-      <% end %>
-
+    <ul class="nav navbar-nav pull-sm-left" >
+      <li class="nav-item nav-link"><%= link_to "View all Stocks", stocks_path %></li>
     </ul>
-    <%= form_tag(stocks_path, method: :get) do %>
-      <%= text_field_tag :term, params[:term], placeholder: "Search By Item Name or Barcode"%>
+    <ul class="nav navbar-nav mx-auto">
+      <%= form_tag(stocks_path, :id => 'search', method: :get) do %>
+      <%= text_field_tag :term, params[:term], placeholder: "Search", style: "display: inline;"%>
       <%= submit_tag 'Search', name: nil %>
-    <% end %>
-    <%= button_to 'Barcode', stocks_show_path, method: :get %>
-    <!-- Button trigger modal -->
+      <% end %>
+      <%= button_to 'Barcode', stocks_show_path, method: :get %>
+    </ul>
+    <ul class ="nav navbar-nav pull-sm-right">
+      <% unless user_signed_in? %>
+        <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
+        <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path %></li>
+      <% else %>
+      <div class="dropdown show">
+        <a class="btn nav-link dropdown-toggle" href="/edit" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.name %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+          <li class="dropdown-item"><%= link_to "Create shopping list", new_user_shoppinglist_path(current_user) %></li>
+          <li class="dropdown-item"><%= link_to "View Your Shopping lists", user_shoppinglists_path(current_user) %></li>
+          <div class="dropdown-divider"></div>
+          <li class="dropdown-item">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </li>
+        </div>
+      </div>
+      <% end %>
+    </ul>
+  </div>
 </nav>
-
 <!-- start of content -->
     <div class="container" >
       <pre><%= params %></pre>

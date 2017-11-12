@@ -2,14 +2,28 @@
 
 <ul>
   <% @shoplists.each do |shoplist| %>
-  <li> <%= shoplist.name_shoppinglist %>
+  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
   <div class="actions">
     <%= link_to 'View', user_shoppinglist_path(:id => shoplist.id) %>
     <%= link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
     <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
   </div>
-</li>
   <% end %>
 </ul>
 
-<%# link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
+<a href="#"></a>
+
+<div class="row">
+  <% @shoplists.each do |shoplist| %>
+  <div class="col-sm-3">
+    <div class="card text-center">
+      <div class="card-block">
+        <h3 class="card-title">
+          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
+        </h3>
+        <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
