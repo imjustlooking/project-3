@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
   def create
-    @item = Item.new(item_params)
+    @item = Item.create(item_params)
 
     @item.save
     redirect_to @item
   end
+
   def show
     @new_item = Item.new
   end
@@ -12,6 +13,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require[:item].permit(:stock_id, :quantity_ordered, :shoppinglist_id)
+    params.require(:item).permit(:stock_id, :quantity_ordered, :shoppinglist_id)
   end
 end

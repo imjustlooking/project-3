@@ -1,19 +1,19 @@
 <h1>Items#create</h1>
 <p>Gabriel testing item creation. Find me in app/views/items/show.html.erb</p>
 
-<%= form_for [@new_item], :url => { :action => "create" }, :html => {:class => "nifty_form"} do |f| %>
+<%= form_for [@new_item] do |f| %>
    <p>
-    <%= f.label ("Stock ID") %><br>
+    <%= f.label("Stock ID") %><br>
     <%= f.number_field :stock_id %>
   </p>
 
   <p>
-    <%= f.label ("Quantity") %><br>
+    <%= f.label("Quantity") %><br>
     <%= f.number_field :quantity_ordered %>
   </p>
 
   <p>
-    <%= f.label ("Shopping list") %><br>
+    <%= f.label("Shopping list") %><br>
     <%= f.number_field :shoppinglist_id %>
   </p>
 
