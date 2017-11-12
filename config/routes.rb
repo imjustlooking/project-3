@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'items/create'
+  # get 'items/create'
 
   root 'main#index'
 
@@ -17,4 +17,6 @@ devise_for :users, path: '', path_names: {
 
   #resources routes
   resources :stocks
+
+  resources :items
 end
