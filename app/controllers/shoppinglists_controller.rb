@@ -22,13 +22,19 @@ class ShoppinglistsController < ApplicationController
   end
 
   def update
-    if Shoppinglist.find(params[:id]).update(params.require(:shoppinglist).permit(:name_shoppinglist))
+    @shoppinglist = Shoppinglist.find(params[:id])
+    if @shoppinglist.update(params.require(:shoppinglist).permit(:name_shoppinglist, :paid_on))
+      flash[:alert]="Shopping List Updated"
       redirect_to action: "index"
-
     else
       flash[:alert]="Shopping list cannot update"
       render 'edit'
     end
+  end
+
+  def paid
+    shoppinglist = Shoppinglist.find(params[:id])
+    shoppinglist.update(params.require(:paid_on).permit(:paid_on))
   end
 
   def destroy
