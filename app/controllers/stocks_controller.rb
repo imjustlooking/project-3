@@ -10,7 +10,7 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
   end
 
   def create
-    new_stock = Stock.create(params.require(:stock).permit(:name_item, :barcode, :price, :quantity, :category_id))
+    new_stock = Stock.create(params.require(:stock).permit(:name_item, :barcode, :price, :quantity, :category_id, :img))
     redirect_to action: "index"
   end
 

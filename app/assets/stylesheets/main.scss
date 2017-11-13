@@ -4,12 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text|Roboto+Condensed');
 
-$primary-bg: #B5DFCA;
+$primary-bg: #E7E7E7;
 $font-color: #3FA34D;
 
 $title-font: 'Libre Barcode 39 Text', cursive;
 $body-font: 'Roboto Condensed', sans-serif;
-
+//
 #mainTitle {
   font-family: $title-font;
   font-size: 45px;
@@ -18,7 +18,7 @@ $body-font: 'Roboto Condensed', sans-serif;
 
 
 body{
-  // background:  $primary-bg;
+  background:  $primary-bg;
   font-family: $body-font;
 
 }
