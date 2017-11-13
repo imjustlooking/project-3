@@ -4,7 +4,7 @@
     <div class="card text-center" style="height: 350px;">
       <img class="card-img-top" src="..." alt="Card image cap" style="height: 65px;">
       <div class="card-block">
-        <h4 class="card-title", style="height: 100px; overflow: overlay;"><%= stock.name_item%> $<%= stock.price%></h4>
+        <h4 class="card-title", style="height: 100px; overflow: overlay;"><%= stock.name_item%> $<%='%.2f' % stock.price%></h4>
         <%= form_for Item.new do |f| %>
             <%= f.hidden_field :stock_id, value: stock.id %>
           <div class="field" style="height: 25px;">
