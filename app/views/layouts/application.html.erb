@@ -20,9 +20,9 @@
     <ul class="nav navbar-nav mx-auto">
       <%= form_tag(stocks_path, :id => 'search', method: :get) do %>
       <%= text_field_tag :term, params[:term], placeholder: "Search", style: "display: inline;"%>
-      <%= submit_tag 'Search', name: nil %>
+      <%= submit_tag 'Search', class: "btn", name: nil %>
       <% end %>
-      <%= button_to 'Barcode', stocks_show_path, method: :get %>
+      <%= button_to 'Barcode', stocks_show_path, class: "btn ", method: :get %>
     </ul>
     <ul class ="nav navbar-nav pull-sm-right">
       <% unless user_signed_in? %>

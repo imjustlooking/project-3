@@ -4,14 +4,11 @@
   <% @shoplists.each do |shoplist| %>
   <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
   <div class="actions">
-    <%= link_to 'View', user_shoppinglist_path(:id => shoplist.id) %>
     <%= link_to 'Edit', edit_user_shoppinglist_path(:id => shoplist.id) %>
     <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
   </div>
   <% end %>
 </ul>
-
-<a href="#"></a>
 
 <div class="row">
   <% @shoplists.each do |shoplist| %>
