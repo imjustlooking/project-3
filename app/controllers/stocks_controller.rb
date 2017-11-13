@@ -1,8 +1,10 @@
 class StocksController < ApplicationController
 before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
-
+has_scope :category_type
   def index
-    @stocks = Stock.search(params[:term]).order('name_item asc')
+    @stocks = apply_scopes(Stock).all
+    # @stocks = Stock.search(params[:term]).order('name_item asc')
+    # @stocks = Stock.fruit_type
   end
 
   def stock_params
@@ -30,7 +32,7 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
       if Stock.find(params[:id]).update(params.require(:stock).permit(:name_item, :barcode, :price, :category_id, :img))
         redirect_to action: "index"
       else
-        flash[:alert] = "Stock cannot be updated"
+        flash[:danger] = "Stock cannot be updated"
         render 'edit'
     end
   end

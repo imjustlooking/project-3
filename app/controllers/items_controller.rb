@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
       flash[:success] = @item.quantity_ordered.to_s + ' unit(s) of ' + @item.stock.name_item + ' has been added to "' + @item.shoppinglist.name_shoppinglist + '".'
       redirect_to stocks_path
     else
-      flash[:danger] = 'Boo'
+      flash[:danger] = 'Item add failed. Please check if you have selected a valid shopping list.'
       # you guys can change the alert tag accordingly: https://getbootstrap.com/docs/4.0/components/alerts/
       redirect_to stocks_path
     end

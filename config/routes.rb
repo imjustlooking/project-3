@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 
 
+
   #user routes
   devise_for :users, path: '', path_names: {
     sign_in: 'login', sign_out: 'logout',
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   resources :stocks
   #custom routes for barcode scanning page
   get '/stocks/show', to: 'stocks#show'
-
+  get '/stocks/?category_type=:id', to: 'stocks#show', as: 'stocks_type'
   resources :items
   # post '/items/create', to: 'items#create'
   get '/items/add', to: 'items#create'
