@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      flash[:success] = 'Your item has been added.'
+      flash[:success] = @item.quantity_ordered.to_s + ' unit(s) of ' + @item.stock.name_item + ' has been added to "' + @item.shoppinglist.name_shoppinglist + '".'
       redirect_to stocks_path
     else
       flash[:danger] = 'Boo'
