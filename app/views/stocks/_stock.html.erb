@@ -1,7 +1,6 @@
 <ul>
   <% @stocks.each do |stock| %>
-  <li><%= stock.name_item%> $<%= stock.price%></li>
-
+  <li><%= stock.name_item%> $<%= stock.price%>></li>
   <%= form_for Item.new do |f| %>
       <%= f.hidden_field :stock_id, value: stock.id %>
       <%= f.hidden_field :quantity_ordered, value: 1 %>
