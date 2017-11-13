@@ -4,7 +4,7 @@
 
 <ul>
 <% @shoppinglist.items.each do |item| %>
-<li><%= item.stock.name_item %></li>
+<li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %> </li>
 <% end %>
 </ul>
 

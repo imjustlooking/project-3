@@ -2,7 +2,7 @@ class StocksController < ApplicationController
 before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 
   def index
-    @stocks = Stock.search(params[:term])
+    @stocks = Stock.search(params[:term]).order('name_item asc')
   end
 
   def stock_params
@@ -15,7 +15,7 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
   end
 
   def show
-
+    @new_item = Item.new
   end
 
   def new
