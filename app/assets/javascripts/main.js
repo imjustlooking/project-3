@@ -1,7 +1,4 @@
 $(document).on('turbolinks:load', function () {
-  if ($(".stocks.show").length > 0){
-    return console.log('hello')
-  }
     var results = {}
     var video = $('#gum-local')[0]
     var constraints = { audio: false, video: true }
