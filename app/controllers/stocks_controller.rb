@@ -15,7 +15,7 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
   end
 
   def show
-
+    @new_item = Item.new
   end
 
   def new

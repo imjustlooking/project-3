@@ -29,6 +29,8 @@ gem 'autoprefixer-rails'
 gem 'sprockets-rails'
 
 gem 'jquery-rails'
+#for jquery search autocompletion
+gem 'jquery-ui-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

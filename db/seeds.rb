@@ -42,6 +42,13 @@
 #     category_id: 1
 #   )
 
-  Category.create(
-    name_category: "organic"
-  )
+#Create Categories
+Category.create(name_category: "Fruits")
+Category.create(name_category: "Meat")
+Category.create(name_category: "Vegetables")
+Category.create(name_category: "Frozen")
+Category.create(name_category: "Bakery")
+Category.create(name_category: "Organic")
+Category.create(name_category: "Baby")
+Category.create(name_category: "Health")
+Category.create(name_category: "Household")

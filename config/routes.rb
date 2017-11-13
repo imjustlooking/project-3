@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'items/create'
 
 
-  #resources routes
+  #stock routes
   resources :stocks
   #custom routes for barcode scanning page
   get '/stocks/show', to: 'stocks#show'
