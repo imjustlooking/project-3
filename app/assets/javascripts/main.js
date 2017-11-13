@@ -1,7 +1,10 @@
-$(document).on('turbolinks:load', function () {
+// $(document).on('turbolinks:load', function () {
+$(document).ready(function () {
+if ($('#cam_output').length > 0) {
     var results = {}
-    var video = $('#gum-local')[0]
+    var video = $('#cam_output')[0]
     var constraints = { audio: false, video: true }
+    var off_constraints = {audio: false, video: false}
 
     camstart('begin')
     function camstart (a) {
@@ -26,7 +29,7 @@ $(document).on('turbolinks:load', function () {
           inputStream: {
             name: 'Live',
             type: 'LiveStream',
-            target: '#gum-local'
+            target: '#cam_output'
           },
           decoder: {
         // readers : ['ean_reader','ean_8_reader','code_39_reader','code_39_vin_reader','codabar_reader','upc_reader','upc_e_reader','code_128_reader'],
@@ -82,9 +85,16 @@ $(document).on('turbolinks:load', function () {
             //   return a + b
             // })
       var maxFrequency = Math.max.apply(null, frequency)
+      Object.prototype.getKey = function(value) {
+        var object = this
+        for (var key in object) {
+           if (object[key]==value) return key;
+       }
+      }
+      var mostScannedBarcode = results.getKey(maxFrequency)
             // console.log('maxFrequency', maxFrequency)
             // if (maxFrequency > (0.7 * totalScans) && totalScans > 20) {
-      var mostScannedBarcode = Object.keys(results).find(key => results[key] === maxFrequency)
+      // var mostScannedBarcode = Object.keys(results).find(key => results[key] === maxFrequency)
       console.log('max', mostScannedBarcode)
       $('#barcodeField').val(mostScannedBarcode)
           // }
@@ -101,4 +111,5 @@ $(document).on('turbolinks:load', function () {
     })
 
   // }
+}
 })

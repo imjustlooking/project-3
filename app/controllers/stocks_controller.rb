@@ -27,7 +27,7 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
   end
 
   def update
-      if Stock.find(params[:id]).update(params.require(:stock).permit(:name_item, :barcode, :price, :category_id))
+      if Stock.find(params[:id]).update(params.require(:stock).permit(:name_item, :barcode, :price, :category_id, :img))
         redirect_to action: "index"
       else
         flash[:alert] = "Stock cannot be updated"
