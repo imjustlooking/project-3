@@ -5,7 +5,10 @@
 <ul>
 <% @shoppinglist.items.each do |item| %>
 <li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %> </li>
+<p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
 <% end %>
+
+<p>Your Total: $<%= @shoppinglist.total_price %></p>
 </ul>
 
 <%= link_to 'Edit', edit_user_shoppinglist_path(:id), class: "btn btn-secondary" %>
