@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20171113040007) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "items", "shoppinglists"
+  add_foreign_key "items", "shoppinglists", on_delete: :cascade
   add_foreign_key "items", "stocks"
   add_foreign_key "shoppinglists", "users"
   add_foreign_key "stocks", "categories"
