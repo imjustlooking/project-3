@@ -10,5 +10,5 @@ protected
  devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :phoneNumber])
  end
 
-
+ 
 end
