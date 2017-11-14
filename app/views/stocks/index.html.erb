@@ -1,4 +1,17 @@
 <h1>Stock</h1>
+
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#"> test
+    <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+  </a>
+  <a class="navbar-brand" href="#"> link </a>
+  <a class="navbar-brand" href="#"> link </a>
+  <a class="navbar-brand" href="#"> link </a>
+  <a class="navbar-brand" href="#"> link </a>
+  <a class="navbar-brand" href="#"> link </a>
+
+</nav>
+
 <% if user_signed_in? && current_user.type_admin %>
   <%= link_to 'Add new stock', new_stock_path  %>
 <% end %>

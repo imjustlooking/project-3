@@ -4,12 +4,13 @@
 
 <ul>
 <% @shoppinglist.items.each do |item| %>
-<li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %> </li>
+<li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x<%= item.quantity_ordered %> </li>
 <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
 <% end %>
 
 <p>Your Total: $<%= @shoppinglist.total_price %></p>
 </ul>
+
 
 <%= link_to 'Edit', edit_user_shoppinglist_path(:id), class: "btn btn-secondary" %>
 <% unless @shoppinglist.items.count==0 || @shoppinglist.paid_on%>
@@ -20,3 +21,25 @@
 <% end %>
 
 <%= link_to "back", user_shoppinglists_path(:id) %>
+
+<%# edit %>
+
+<%= form_tag charges_test_path(@shoppinglist.id) do %>
+<%# <%= hidden_field_tag ‘amount’, @shoppinglist.total_price * 100 %>
+   <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Your total amount: $<%= @amount/100 %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
+          data-amount=<%= @amount %>
+          data-locale="auto"></script>
+<% end %>

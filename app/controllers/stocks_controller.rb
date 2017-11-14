@@ -2,6 +2,7 @@ class StocksController < ApplicationController
 before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 has_scope :category_type
   def index
+    @category = Category.all
     @stocks = apply_scopes(Stock).all
     # @stocks = Stock.search(params[:term]).order('name_item asc')
     # @stocks = Stock.fruit_type

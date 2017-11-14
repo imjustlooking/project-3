@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get '/items/add', to: 'items#create'
 
    resources :charges, only: [:new, :create]
+   post '/charges/:id', to: 'charges#create', as: 'charges_test'
+
 end

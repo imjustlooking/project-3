@@ -6,6 +6,7 @@ class ShoppinglistsController < ApplicationController
 
   def show
     @shoppinglist = Shoppinglist.find(params[:id])
+    @amount = @shoppinglist.total_price*100.to_i
 
   end
   def create
