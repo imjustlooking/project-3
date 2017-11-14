@@ -4,7 +4,7 @@ class ChargesController < ApplicationController
 
   def create
     @shoppinglist = Shoppinglist.find(params[:id])
-    @amount = @shoppinglist.total_price*100.to_i
+    @amount = (@shoppinglist.total_price*100).to_i
 
   customer = Stripe::Customer.create(
     email: params[:stripeEmail],
