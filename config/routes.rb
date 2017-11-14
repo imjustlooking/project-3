@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-
-
   #root routes
   root 'main#index'
-
-
 
   #user routes
   devise_for :users, path: '', path_names: {
@@ -21,9 +17,6 @@ Rails.application.routes.draw do
     resources :shoppinglists
   end
 
-  get 'items/create'
-
-
   #stock routes
   resources :stocks
   #custom routes for barcode scanning page
@@ -31,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :items
   # post '/items/create', to: 'items#create'
+  get 'items/create'
   get '/items/add', to: 'items#create'
 
    resources :charges, only: [:new, :create]
