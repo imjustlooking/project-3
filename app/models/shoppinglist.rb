@@ -1,7 +1,6 @@
 class Shoppinglist < ApplicationRecord
   belongs_to :user
   has_many :items
-  before_save :update_total
 
   def calculate_total
     self.shoppinglist(params[:id]).items {|item| item.stock.price* item.quantity_ordered}.sum

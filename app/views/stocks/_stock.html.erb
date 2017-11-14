@@ -1,20 +1,32 @@
-<ul>
+<div class="row">
   <% @stocks.each do |stock| %>
-  <li><%= stock.name_item%> $<%= stock.price%>></li>
-  <%= form_for Item.new do |f| %>
-      <%= f.hidden_field :stock_id, value: stock.id %>
-      <%= f.hidden_field :quantity_ordered, value: 1 %>
-    <div class="field">
-      <%= f.label("Shopping list") %>
-      <%= f.collection_select :shoppinglist_id, current_user.shoppinglists, :id, :name_shoppinglist %>
+  <div class="card-deck col-sm-2", style="padding: 5px;">
+    <div class="card text-center" style="height: 350px;">
+      <img class="card-img-top" src="..." alt="Card image cap" style="height: 85px;">
+      <div class="card-block">
+        <h4 class="card-title", style="height: 100px; overflow: overlay;"><%= stock.name_item%> $<%='%.2f' % stock.price%></h4>
+        <%= form_for Item.new do |f| %>
+            <%= f.hidden_field :stock_id, value: stock.id %>
+          <div class="field" style="height: 25px;">
+            <%= f.label("Quantity:") %>
+            <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
+          </div>
+          <div class="field">
+            <%= f.label("Shopping list:") %>
+            <%= f.collection_select :shoppinglist_id, current_user.shoppinglists, :id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
+          </div>
+          <div class="card-footer" style="height: 72px;">
+            <%= f.submit "Add to list"%>
+            <div class="block">
+              <% if user_signed_in? && current_user.type_admin %>
+              <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
+              <%= link_to "Delete", stock_path(:id => stock.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit "Add to list"%>
-    </div>
-    <% end %>
-     <% if user_signed_in? && current_user.type_admin %>
-      <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
-      <%= link_to "Delete", stock_path(:id => stock.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
-    <% end %>
+  </div>
   <% end %>
-</ul>
+</div>

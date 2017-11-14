@@ -31,12 +31,22 @@
       <% else %>
       <div class="dropdown show">
         <a class="btn nav-link dropdown-toggle" href="/edit" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shopping Lists
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <li class="dropdown-item"><%= link_to "Overview", user_shoppinglists_path(current_user) %></li>
+          <div class="dropdown-divider"></div>
+          <% current_user.shoppinglists.each do |shoppinglist| %>
+          <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
+          <% end %>
+        </div>
+      </div>
+      <div class="dropdown show">
+        <a class="btn nav-link dropdown-toggle" href="/edit" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.name %>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
-          <li class="dropdown-item"><%= link_to "Create shopping list", new_user_shoppinglist_path(current_user) %></li>
-          <li class="dropdown-item"><%= link_to "View Your Shopping lists", user_shoppinglists_path(current_user) %></li>
           <div class="dropdown-divider"></div>
           <li class="dropdown-item">
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>

@@ -11,8 +11,34 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @update_item = Item.find(params[:id])
+  end
+
+  def update
+    @update_item = Item.find(params[:id])
+    @update_item.update(params.permit(:quantity_ordered))
+
+    if params[:operation] == "add"
+      #increasing ordering quantity by 1
+      @update_item.add
+      # flash[:success] = "updated " + @update_item.quantity_ordered.to_s + "of " + @item.stock.name_item
+    elsif params[:operation] == "minus" && @update_item.quantity_ordered>0
+      #decreasing ordering quantity by 1
+      @update_item.subtract
+    else
+      flash[:danger] = 'Cannot change quantity of item'
+    end
+      redirect_back(fallback_location: root_path)
+  end
+
   def show
     @new_item = Item.new
+  end
+
+  def destroy
+    Item.destroy(params[:id])
+    redirect_back(fallback_location: root_path)
   end
 
   private
