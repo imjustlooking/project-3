@@ -1,15 +1,15 @@
 <!-- <h1> Scan your product barcodes </h1> -->
 <h1> Barcode test </h1>
+<button id ="startScan" type="button">Start input</button>
+<button id="stopScan" type="button">Stop input</button>
+<p> The camera (if enabled), automatically starts scanning for a barcode. <br>If you wish to scan a different object, reset the barcode scanner by clicking on stop input, then start input buttons. </p>
+<%= form_tag(stocks_path, method: :get) do %>
+<%= label_tag 'barcode' %>
+<%= hidden_field_tag :button , "searching" %>
+<%= text_field_tag :term, params[:term], id: 'barcodeField'%>
+<%= submit_tag 'Search', name: nil %>
+<% end %>
     <div class='container' style='position:relative'>
-      <button id ="startScan" type="button">Start input</button>
-      <button id="stopScan" type="button">Stop input</button>
-      <p> The camera (if enabled), automatically starts scanning for a barcode. <br>If you wish to scan a different object, reset the barcode scanner by clicking on stop input, then start input buttons. </p>
-      <%= form_tag(stocks_path, method: :get) do %>
-      <%= label_tag 'barcode' %>
-      <%= hidden_field_tag :button , "searching" %>
-      <%= text_field_tag :term, params[:term], id: 'barcodeField'%>
-      <%= submit_tag 'Search', name: nil %>
-      <% end %>
     <video id="cam_output" autoplay playsinline style='opacity:0.8; object-fit: contain;'></video>
     <canvas class="drawingBuffer" width="640" height="480" style='position:absolute; top:0px; left:0px; float:left; object-fit: contain;'></canvas>
     </div>
