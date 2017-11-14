@@ -19,6 +19,7 @@
     </ul>
     <ul class="nav navbar-nav mx-auto">
       <%= form_tag(stocks_path, :id => 'search', method: :get) do %>
+      <%= hidden_field_tag :button , "searching" %>
       <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline;"%>
       <%= submit_tag 'Search', class: "btn", name: nil %>
       <% end %>

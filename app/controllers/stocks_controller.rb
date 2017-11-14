@@ -3,9 +3,11 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
 has_scope :category_type
   def index
     @category = Category.all
-    @stocks = apply_scopes(Stock).all
-    # @stocks = Stock.search(params[:term]).order('name_item asc')
-    # @stocks = Stock.fruit_type
+    if params[:button] == "searching"
+      @stocks = Stock.search(params[:term]).order('name_item asc')
+    else
+      @stocks = apply_scopes(Stock).all
+    end
   end
 
   def stock_params
