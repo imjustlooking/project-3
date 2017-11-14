@@ -78,18 +78,36 @@ $(document).on('turbolinks:load', function () {
 
       console.log(results)
       var frequency = Object.values(results)
-
+      var totalScans = frequency.reduce(function (a, b) {
+        return a + b
+      })
       var maxFrequency = Math.max.apply(null, frequency)
 
-      Object.prototype.getKey = function (value) {
-        var object = this
-        for (var key in object) {
-          if (object[key] === value) return key
-        }
+      function keyByValue (value) {
+        var keyArray = Object.keys(results)
+        var valueArray = Object.values(results)
+        var valueIndex = valueArray.indexOf(value)
+
+        return keyArray[valueIndex]
       }
-      var mostScannedBarcode = results.getKey(maxFrequency)
-      console.log('max', mostScannedBarcode)
+      // keyByValue(max_object_value);
+      // Object.prototype.getKey = function (value) {
+      //   var object = this
+      //   for (var key in object) {
+      //     if (object[key] === value) return key
+      //   }
+      // }
+      if (maxFrequency > 5) {
+      // var mostScannedBarcode = results.getKey(maxFrequency)
+      var mostScannedBarcode = keyByValue(maxFrequency)
+      // console.log('max', mostScannedBarcode)
       $('#barcodeField').val(mostScannedBarcode)
+      // setTimeout(function(){ $('#barcodeSubmit').click()}, 100)
+      setTimeout(function(){
+        $('#barcodeSubmit').click()
+        console.log('click')}, 100)
+
+      }
     })
 
   $('#stopScan').click(function () {
