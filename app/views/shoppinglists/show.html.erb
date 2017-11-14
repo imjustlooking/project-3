@@ -4,15 +4,11 @@
 
 <ul>
 <% @shoppinglist.items.each do |item| %>
-<<<<<<< HEAD
-<li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x<%= item.quantity_ordered %> </li>
-=======
 <li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %>
   <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}%>
   <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"} %>
   <%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
 </li>
->>>>>>> d9de46b623dcda1ad3e2fcc1fceaa74ee32e94e8
 <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
 <% end %>
 
