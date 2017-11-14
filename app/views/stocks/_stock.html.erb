@@ -2,7 +2,7 @@
   <% @stocks.each do |stock| %>
   <div class="card-deck col-sm-2", style="padding: 5px;">
     <div class="card text-center" style="height: 350px;">
-      <img class="card-img-top" src="..." alt="Card image cap" style="height: 85px;">
+      <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="height: 85px;">
       <div class="card-block">
         <h4 class="card-title", style="height: 100px; overflow: overlay;"><%= stock.name_item%> $<%='%.2f' % stock.price%></h4>
         <%= form_for Item.new do |f| %>

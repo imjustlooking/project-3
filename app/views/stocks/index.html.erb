@@ -1,15 +1,10 @@
 <h1>Stock</h1>
 
 <nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#"> test
-    <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-  </a>
-  <a class="navbar-brand" href="#"> link </a>
-  <a class="navbar-brand" href="#"> link </a>
-  <a class="navbar-brand" href="#"> link </a>
-  <a class="navbar-brand" href="#"> link </a>
-  <a class="navbar-brand" href="#"> link </a>
-
+  <% @category.each do |category| %>
+  <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"navbar-brand" %>
+  </li>
+  <% end %>
 </nav>
 
 <% if user_signed_in? && current_user.type_admin %>
