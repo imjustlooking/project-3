@@ -64,4 +64,4 @@
 # Stock.create(name_item: "Bonlife Bonmil Organic Growing Up 3+ Stage 4 Milk Powder", barcode: 888842651967, price: 48, category_id: 7, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/IMG_7164.JPG")
 # Stock.create(name_item: "Blackmores Vitamin C 500", barcode: 888872763643, price: 11.20, category_id: 8, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/93460279_0001_1499437714094.jpg")
 # Stock.create(name_item: "Onwards 3-Ply Toilet Tissue", barcode: 887273289435, price: 5.90, category_id: 9, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/IMG_10314A.JPG")
-Stock.create(name_item: "Dettol Sensitive Personal Care Wipes", barcode: 6001106126438, price: 1.94, category_id: 9, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/unnamed_1489401732992.jpg")
+# Stock.create(name_item: "Dettol Sensitive Personal Care Wipes", barcode: 6001106126438, price: 1.94, category_id: 9, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/unnamed_1489401732992.jpg")
