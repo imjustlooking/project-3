@@ -2,12 +2,6 @@ Rails.application.routes.draw do
   #root routes
   root 'main#index'
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> b0ca2b3110e99627832a05a30541c0f2d632484c
   #user routes
   devise_for :users, path: '', path_names: {
     sign_in: 'login', sign_out: 'logout',
