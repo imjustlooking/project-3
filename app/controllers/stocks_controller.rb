@@ -15,7 +15,7 @@ has_scope :category_type
   end
 
   def create
-    new_stock = Stock.create(params.require(:stock).permit(:name_item, :barcode, :price, :quantity, :category_id, :img))
+    Stock.create(params.require(:stock).permit(:name_item, :barcode, :price, :quantity, :category_id, :img))
     redirect_to action: "index"
   end
 
@@ -37,7 +37,7 @@ has_scope :category_type
       else
         flash[:danger] = "Stock cannot be updated"
         render 'edit'
-    end
+      end
   end
 
   def destroy
