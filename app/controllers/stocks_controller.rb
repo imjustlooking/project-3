@@ -3,8 +3,15 @@ before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destro
 has_scope :category_type
   def index
     @category = Category.all
+    session[:return_to] ||= request.referer
     if params[:button] == "searching"
-      @stocks = Stock.search(params[:term]).order('name_item asc')
+      if Stock.search(params[:term]).order('name_item asc').length > 0
+        p 'length'
+        @stocks = Stock.search(params[:term]).order('name_item asc')
+      else
+        flash[:danger] = "No matches for '" + params[:term] + "'."
+        redirect_to session.delete(:return_to)
+      end
     else
       @stocks = apply_scopes(Stock).all
     end

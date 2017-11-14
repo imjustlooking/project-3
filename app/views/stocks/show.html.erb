@@ -2,12 +2,12 @@
 <h1> Barcode test </h1>
 <button id ="startScan" type="button">Start input</button>
 <button id="stopScan" type="button">Stop input</button>
-<p> The camera (if enabled), automatically starts scanning for a barcode. <br>If you wish to scan a different object, reset the barcode scanner by clicking on stop input, then start input buttons. </p>
+<p> The camera (if enabled), automatically starts scanning for a barcode. <br>You will be redirected upon any database matches. </p>
 <%= form_tag(stocks_path, method: :get) do %>
 <%= label_tag 'barcode' %>
 <%= hidden_field_tag :button , "searching" %>
 <%= text_field_tag :term, params[:term], id: 'barcodeField'%>
-<%= submit_tag 'Search', name: nil %>
+<%= submit_tag 'Search', name: nil, id: 'barcodeSubmit' %>
 <% end %>
     <div class='container' style='position:relative'>
     <video id="cam_output" autoplay playsinline style='opacity:0.8; object-fit: contain;'></video>
