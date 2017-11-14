@@ -1,6 +1,6 @@
 class ChargesController < ApplicationController
   def new
-    
+
   end
 
   def create
@@ -18,6 +18,9 @@ class ChargesController < ApplicationController
     description: 'Rails Stripe customer',
     currency: 'usd'
   )
+
+  @shoppinglist.update(params.permit(:paid_on))
+  @shoppinglist.update_column(:paid_on, DateTime.now.to_s)
 
   rescue Stripe::CardError => e
   flash[:error] = e.message
