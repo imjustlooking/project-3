@@ -14,7 +14,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.shoppinglist_id = shoppinglist.id
     if @item.save
-      flash[:success] = @item.quantity_ordered.to_s + ' unit(s) of ' + @item.stock.name_item + ' has been added to "' + @item.shoppinglist.name_shoppinglist + '".'
+      flash[:success] = "Added #{@item.quantity_ordered} unit(s) of #{@item.stock.name_item} to #{view_context.link_to(@item.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item.shoppinglist_id))}.".html_safe
+
       redirect_to stocks_path
     else
       render json: {

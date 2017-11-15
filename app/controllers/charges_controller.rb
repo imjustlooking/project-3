@@ -19,11 +19,11 @@ class ChargesController < ApplicationController
     description: 'Rails Stripe customer',
     currency: 'usd'
   )
-
+  
   @shoppinglist.update(params.permit(:paid_on))
   @shoppinglist.update_column(:paid_on, DateTime.now.to_s)
 
-  UserShoppinglistEmailMailer.notify_user(@user).deliver_now
+  UserShoppinglistEmailMailer.notify_user(@user, @shoppinglist).deliver_now
 
   rescue Stripe::CardError => e
   flash[:error] = e.message

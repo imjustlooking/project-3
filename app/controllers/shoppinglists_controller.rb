@@ -6,13 +6,16 @@ class ShoppinglistsController < ApplicationController
 
   def show
     @shoppinglist = Shoppinglist.find(params[:id])
+    @shoppinglist_items = @shoppinglist.items.order('id desc')
     @amount = @shoppinglist.total_price*100.to_i
 
   end
   def create
-    current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
+    @new_shoppinglist = current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
+    flash[:info] = @new_shoppinglist.name_shoppinglist + " created. Fill up your shopping list!"
+    redirect_to stocks_path
+
     # render :json => current_user.shoppinglists
-    redirect_to action: "index"
   end
 
   def new
@@ -39,7 +42,7 @@ class ShoppinglistsController < ApplicationController
   end
 
   def paid
-    shoppinglist = Shoppinglist.find(params[:id])
+    shoppinglist = Shoppinglist.find(params[:id]).order
     shoppinglist.update(params.require(:paid_on).permit(:paid_on))
   end
 
