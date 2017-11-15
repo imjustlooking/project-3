@@ -1,7 +1,4 @@
-require 'elasticsearch/model'
-
 class Stock < ApplicationRecord
-  searchkick
   belongs_to :category
   has_many :items
   scope :fruit_type, -> { where ('category_id = 1')}

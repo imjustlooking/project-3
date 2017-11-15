@@ -29,11 +29,6 @@ gem 'puma', '~> 3.7'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'autoprefixer-rails'
 gem 'sprockets-rails'
-# gabriel added searchkick
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-
-gem "searchkick"
 
 gem 'jquery-rails'
 #for jquery search autocompletion
