@@ -60,7 +60,7 @@
     <% end %>
 
     <label class="amount" style="font-size:30px">
-      <span><strong>Checkout your cart : $<%= (@amount/100).to_i %></strong></span>
+      <span><strong>Checkout your cart : $<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
   </article>
 
