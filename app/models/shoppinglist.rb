@@ -1,6 +1,6 @@
 class Shoppinglist < ApplicationRecord
   belongs_to :user
-  has_many :items
+  has_many :items, inverse_of: :shoppinglist
 
   def calculate_total
     self.shoppinglist(params[:id]).items {|item| item.stock.price* item.quantity_ordered}.sum
