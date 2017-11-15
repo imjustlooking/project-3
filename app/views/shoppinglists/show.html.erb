@@ -1,20 +1,34 @@
 <%= link_to "Start shopping", stocks_path %>
 <br>
-<%= @shoppinglist.inspect %>
-<h1>Items in <%= @shoppinglist.name_shoppinglist %></h1>
+<h1>Confirm: '<%= @shoppinglist.name_shoppinglist %>'</h1>
 
-<ul>
-<% @shoppinglist_items.each do |item| %>
-<li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %>
-  <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}%>
-  <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"} %>
-  <%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
-</li>
-<p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
-<% end %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Subtotal</th>
+        <th>Remove</th>
 
+      </tr>
+    </thead>
+    <% @shoppinglist_items.each do |item| %>
+    <tbody>
+      <tr>
+        <td><%= item.stock.name_item%></td>
+        <td>$<%='%.2f' % item.stock.price%></td>
+        <td><%= item.quantity_ordered %></td>
+        <td>$<%='%.2f' % (item.stock.price * item.quantity_ordered) %></td>
+        <td><%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<p>Your Total: $<%= @shoppinglist.total_price %></p>
+Your Total: $<%= @shoppinglist.total_price %>
 </ul>
 
 
