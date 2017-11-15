@@ -8,10 +8,11 @@
   </li>
   <% end %>
 </nav>
+<% if user_signed_in? %>
 <%= form_for Item.new do |f|%>
 <%= f.label("Master shopping list:") %>
 <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;", :id => 'list_master'} %>
-
+<% end %>
 <% end %>
 
 
