@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    @user =current_user
     @shoppinglist = Shoppinglist.find(params[:id])
     @amount = (@shoppinglist.total_price*100).to_i
 
@@ -21,6 +22,8 @@ class ChargesController < ApplicationController
 
   @shoppinglist.update(params.permit(:paid_on))
   @shoppinglist.update_column(:paid_on, DateTime.now.to_s)
+
+  UserShoppinglistEmailMailer.notify_user(@user).deliver_now
 
   rescue Stripe::CardError => e
   flash[:error] = e.message

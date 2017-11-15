@@ -9,6 +9,7 @@
 
 <div class="row">
   <% @shoplists.each do |shoplist| %>
+  <% unless shoplist.paid_on %>
   <div class="card-deck col-sm-3">
     <div class="card text-center">
       <div class="card-block">
@@ -21,5 +22,6 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
 </div>

@@ -38,7 +38,9 @@
           <li class="dropdown-item"><%= link_to "Overview", user_shoppinglists_path(current_user) %></li>
           <div class="dropdown-divider"></div>
           <% current_user.shoppinglists.each do |shoppinglist| %>
+          <% unless shoppinglist.paid_on %>
           <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -48,6 +50,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <li class="dropdown-item"><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+          <li class="dropdown-item"><%= link_to "Transaction History", user_shoppinglist_history_path(current_user) %></li>
           <div class="dropdown-divider"></div>
           <li class="dropdown-item">
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>
