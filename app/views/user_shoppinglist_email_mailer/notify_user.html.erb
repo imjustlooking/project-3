@@ -10,5 +10,16 @@
 
     <p>Thank you for your purchase at smartestmart. Transaction details below</p>
 
+    <ul>
+    
+      <%= @shoppinglist.items.each do |item| %>
+      <li><%= item.stock.name_item%>, $<%= item.stock.price%> x <%= item.quantity_ordered %>
+      </li>
+    <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
+
+    <% end %>
+  <p>Your paid shopping cart: $<%# @shoppinglist.total_price %></p>
+    </ul>
+
   </body>
 </html>
