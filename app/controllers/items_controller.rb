@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      flash[:success] = "Successfully created #{view_context.link_to(@item.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item.shoppinglist_id))}.".html_safe
+      flash[:success] = "Added #{@item.quantity_ordered} unit(s) of #{@item.stock.name_item} to #{view_context.link_to(@item.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item.shoppinglist_id))}.".html_safe
 
       redirect_to stocks_path
     else
