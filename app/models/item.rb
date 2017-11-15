@@ -8,11 +8,10 @@ def add
 end
 
 def subtract
+  if self.quantity_ordered > 1
   self.quantity_ordered -= 1
   self.save
-  if self.quantity_ordered == 0
-    return self.destroy
-  end
+end
 end
 
 end

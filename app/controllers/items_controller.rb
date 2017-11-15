@@ -24,11 +24,11 @@ class ItemsController < ApplicationController
       #increasing ordering quantity by 1
       @update_item.add
       # flash[:success] = "updated " + @update_item.quantity_ordered.to_s + "of " + @item.stock.name_item
-    elsif params[:operation] == "minus" && @update_item.quantity_ordered>0
+    elsif params[:operation] == "minus" && @update_item.quantity_ordered>1
       #decreasing ordering quantity by 1
       @update_item.subtract
     else
-      flash[:danger] = 'Cannot change quantity of item'
+      flash[:danger] = "this is the minimum quantity of #{@update_item.stock.name_item}. To remove completely, click on the corresponding 'X'."
     end
       redirect_back(fallback_location: root_path)
   end
