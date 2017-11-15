@@ -1,0 +1,15 @@
+<h1>Transaction History</h1>
+
+<ul>
+  <% @shoplists.each do |shoplist| %>
+  <% if shoplist.paid_on %>
+    <li><%= shoplist.name_shoppinglist %>: <%= shoplist.paid_on %> Total Price: $<%= '%.2f' %shoplist.total_price %></li>
+    <ul>
+      <% shoplist.items.each do |item| %>
+      <li><%= item.stock.name_item %> X<%= item.quantity_ordered %></li>
+      <% end  %>
+    </ul>
+    <%= button_to "duplicate list" %>
+    <% end %>
+  <% end %>
+</ul>

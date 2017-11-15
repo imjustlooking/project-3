@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users do
     put 'shoppinglist/:id', to: 'shopplinglist#paid'
     resources :shoppinglists
+      get 'shoppinglist/history', to: 'shoppinglists#history'
   end
 
   #stock routes
@@ -22,13 +23,16 @@ Rails.application.routes.draw do
   #custom routes for barcode scanning page
   get '/stocks/show', to: 'stocks#show'
   get '/stocks/?category_type=:id', to: 'stocks#show', as: 'stocks_type'
+
+  #item routes
   resources :items
   # post '/items/create', to: 'items#create'
   get 'items/create'
   get '/items/add', to: 'items#create'
 
-   resources :charges, only: [:new, :create]
-   post '/charges/:id', to: 'charges#create', as: 'charges_test'
+  #charges routes
+  resources :charges, only: [:new, :create]
+  post '/charges/:id', to: 'charges#create', as: 'charges_test'
 
 
 end

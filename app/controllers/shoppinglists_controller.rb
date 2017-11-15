@@ -14,6 +14,7 @@ class ShoppinglistsController < ApplicationController
     # render :json => current_user.shoppinglists
     redirect_to action: "index"
   end
+
   def new
     @new_shoppinglist = Shoppinglist.new
   end
@@ -31,6 +32,10 @@ class ShoppinglistsController < ApplicationController
       flash[:alert]="Shopping list cannot update"
       render 'edit'
     end
+  end
+
+  def history
+    @shoplists =  current_user.shoppinglists
   end
 
   def paid
