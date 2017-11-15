@@ -17,6 +17,7 @@
         <h3 class="card-title", style="height: 99px;">
           <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
         </h3>
+          <p><%= shoplist.items.length %> items</p>
         <div class="card-footer">
         <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
         </div>
