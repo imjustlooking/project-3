@@ -1,5 +1,5 @@
 <h2>Thank you for purchasing <%= @shoppinglist.name_shoppinglist %> ,
-  you paid <strong>$<%=  '%.2f' % @amount.to_f/100 %></strong>!
+  you paid <strong>$<%= '%.2f' % @shoppinglist.total_price %></strong>!
   An email has been sent to you.</h2>
   <ul>
 

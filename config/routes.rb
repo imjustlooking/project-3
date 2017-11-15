@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   #item routes
   resources :items
   # post '/items/create', to: 'items#create'
-  get 'items/create'
-  get '/items/add', to: 'items#create'
+  # get 'items/create'
+  # get '/items/add', to: 'items#create'
 
   #charges routes
   resources :charges, only: [:new, :create]
