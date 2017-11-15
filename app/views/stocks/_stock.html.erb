@@ -8,14 +8,20 @@
         <% if user_signed_in? %>
         <%= form_for Item.new do |f| %>
             <%= f.hidden_field :stock_id, value: stock.id %>
-
           <div class="field" style="height: 25px;">
             <%= f.label("Quantity:") %>
             <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
           </div>
           <div class="field">
+            <%= current_user.shoppinglists.where(:paid_on=> nil).count %>
             <%= f.label("Shopping list:") %>
-            <%= f.collection_select :shoppinglist_id, current_user.shoppinglists, :id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
+            <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %>
+              <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
+            <% else %>
+              <%= f.fields_for :shoppinglists do |o| %>
+                <%= o.text_field :name_shoppinglist %>
+              <% end %>
+            <% end %>
           </div>
           <div class="card-footer" style="height: 72px;">
             <%= f.submit "Add to list"%>

@@ -38,8 +38,11 @@
           <li class="dropdown-item"><%= link_to "Overview", user_shoppinglists_path(current_user) %></li>
           <div class="dropdown-divider"></div>
           <% current_user.shoppinglists.each do |shoppinglist| %>
-          <% unless shoppinglist.paid_on %>
-          <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
+          <% if !shoppinglist.paid_on %>
+            <li>hello</li>
+            <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
+          <% elsif true || current_user.shoppinglists.where(:paid_on=> nil).count>0 %>
+            <li class="dropdown-item">You have no List, Please <%= link_to "create", user_shoppinglists_path(current_user) %> one.</li>
           <% end %>
           <% end %>
         </div>

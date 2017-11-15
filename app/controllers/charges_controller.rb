@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
     description: 'Rails Stripe customer',
     currency: 'usd'
   )
-
+  
   @shoppinglist.update(params.permit(:paid_on))
   @shoppinglist.update_column(:paid_on, DateTime.now.to_s)
 

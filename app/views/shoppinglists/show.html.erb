@@ -1,6 +1,6 @@
-<%= link_to "Start shopping", stocks_path %>
+<%= link_to "Go back to shopping", stocks_path, class: "btn btn-primary" %>
 <br>
-<h1>Confirm: '<%= @shoppinglist.name_shoppinglist %>'</h1>
+<h1 style="font-size:35px"><%= @shoppinglist.name_shoppinglist %></h1>
 
 <div class="container">
   <table class="table table-hover">
@@ -42,16 +42,13 @@
 
 
   <%= link_to 'Edit', edit_user_shoppinglist_path(:id), class: "btn btn-secondary" %>
-  <% unless @shoppinglist.items.count==0 || @shoppinglist.paid_on%>
-  <%= form_for( @shoppinglist , url:user_shoppinglist_path, method: :put) do |f| %>
-  <%= f.hidden_field :paid_on, value: DateTime.now.to_s %>
-  <%= submit_tag "Pay Now", class:"btn btn-primary"%>
-  <% end %>
-  <% end %>
 
-  <%= link_to "back", user_shoppinglists_path(:id) %>
+  <%= link_to "Create another shopping list", user_shoppinglists_path(:id), class: "btn btn-secondary" %>
 </div>
   <%# edit %>
+
+  <br>
+<div class="container">
 
   <%= form_tag charges_test_path(@shoppinglist.id) do %>
   <%# <%= hidden_field_tag ‘amount’, @shoppinglist.total_price * 100 %>
@@ -61,8 +58,9 @@
       <p><%= flash[:error] %></p>
     </div>
     <% end %>
-    <label class="amount">
-      <span>Your total amount: $<%= @amount/100 %></span>
+
+    <label class="amount" style="font-size:30px">
+      <span><strong>Checkout your cart : $<%= @amount/100 %></strong></span>
     </label>
   </article>
 
@@ -72,3 +70,6 @@
   data-amount=<%= @amount %>
   data-locale="auto"></script>
   <% end %>
+
+
+  </div>
