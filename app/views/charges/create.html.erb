@@ -3,10 +3,10 @@
   An email has been sent to you.</h2>
   <ul>
 
-    <%= @shoppinglist.items.each do |item| %>
+    <% @shoppinglist.items.each do |item| %>
     <li><%= item.stock.name_item%>, $<%= item.stock.price%> x <%= item.quantity_ordered %>
     </li>
-  <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
+  <p>Total arount: <%= (item.stock.price * item.quantity_ordered) %></p>
 
   <% end %>
 <p>Your paid shopping cart: $<%= @shoppinglist.total_price %></p>

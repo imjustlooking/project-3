@@ -1,6 +1,6 @@
 <%= link_to "Start shopping", stocks_path %>
 <br>
-<%= @shoppinglist.inspect %>
+<%# @shoppinglist.inspect %>
 <h1>Items in <%= @shoppinglist.name_shoppinglist %></h1>
 
 <ul>
@@ -19,14 +19,8 @@
 
 
   <%= link_to 'Edit', edit_user_shoppinglist_path(:id), class: "btn btn-secondary" %>
-  <% unless @shoppinglist.items.count==0 || @shoppinglist.paid_on%>
-  <%= form_for( @shoppinglist , url:user_shoppinglist_path, method: :put) do |f| %>
-  <%= f.hidden_field :paid_on, value: DateTime.now.to_s %>
-  <%= submit_tag "Pay Now", class:"btn btn-primary"%>
-  <% end %>
-  <% end %>
 
-  <%= link_to "back", user_shoppinglists_path(:id) %>
+  <%= link_to "Back", user_shoppinglists_path(:id) %>
 </div>
   <%# edit %>
 
