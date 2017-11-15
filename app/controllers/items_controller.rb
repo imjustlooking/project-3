@@ -2,7 +2,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      flash[:success] = @item.quantity_ordered.to_s + ' unit(s) of ' + @item.stock.name_item + ' has been added to "' + @item.shoppinglist.name_shoppinglist + '".'
+      # flash[:success] = " #{@item.quantity_ordered.to_s} unit(s) of #{@item.stock.name_item} has been added to '#{@item.shoppinglist.name_shoppinglist.link_to('test',users_path)}'.".html_safe
+      # flash[:success] = " #{@item.quantity_ordered.to_s} unit(s) of #{@item.stock.name_item} has been added to #{view_context.link_to('test', users_path)}.".html_safe
+      # flash[:success] = "Successfully created #{view_context.link_to(@item.shoppinglist.name_shoppinglist, 'http://localhost:3000')}.".html_safe
+      flash[:success] = "Successfully created #{view_context.link_to(@item.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item.shoppinglist_id))}.".html_safe
+
       redirect_to stocks_path
     else
       flash[:danger] = 'Item add failed. Please check if you have selected a valid shopping list.'

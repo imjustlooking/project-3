@@ -10,9 +10,11 @@ class ShoppinglistsController < ApplicationController
 
   end
   def create
-    current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
+    @new_shoppinglist = current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
+    flash[:info] = @new_shoppinglist.name_shoppinglist + " created. Fill up your shopping list!"
+    redirect_to stocks_path
+
     # render :json => current_user.shoppinglists
-    redirect_to action: "index"
   end
 
   def new
