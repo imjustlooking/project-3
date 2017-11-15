@@ -41,6 +41,19 @@ class ShoppinglistsController < ApplicationController
     @shoplists =  current_user.shoppinglists
   end
 
+  def duplicate
+    new_shoppinglist = current_user.shoppinglists.create(params.permit(:name_shoppinglist))
+    items = Item.where(shoppinglist_id: params[:oldListId])
+    for item in items do
+        new_item =Item.new
+        new_item.stock_id = item.stock_id
+        new_item.quantity_ordered = item.quantity_ordered
+        new_item.shoppinglist_id = new_shoppinglist.id
+        new_item.save
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   def paid
     shoppinglist = Shoppinglist.find(params[:id]).order
     shoppinglist.update(params.require(:paid_on).permit(:paid_on))
@@ -49,5 +62,8 @@ class ShoppinglistsController < ApplicationController
   def destroy
     Shoppinglist.destroy(params[:id])
     redirect_to action: "index"
+  end
+  def item_params
+    params.require(:item).permit(:stock_id, :quantity_ordered, :shoppinglists_id)
   end
 end

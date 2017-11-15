@@ -1,16 +1,37 @@
-<h1>Transaction History</h1>
 <%= link_to "Start shopping", stocks_path %>
+<h1>Transaction History</h1>
+<br>
+<% @shoplists.each do |shoplist| %>
+<% if shoplist.paid_on %>
+<h1>Shopping List:<%= shoplist.name_shoppinglist %></h1>
 
-<ul>
-  <% @shoplists.each do |shoplist| %>
-  <% if shoplist.paid_on %>
-    <li><%= shoplist.name_shoppinglist %>: <%= shoplist.paid_on %> Total Price: $<%= '%.2f' %shoplist.total_price %></li>
-    <ul>
-      <% shoplist.items.each do |item| %>
-      <li><%= item.stock.name_item %> X<%= item.quantity_ordered %></li>
-      <% end  %>
-    </ul>
-    <%# button_to "duplicate list" %>
-    <% end %>
-  <% end %>
-</ul>
+<table class="table" style="text-align: center;">
+  <thead class="thead-inverse">
+    <tr>
+      <th style="text-align: left;">Item</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <% shoplist.items.each do |item| %>
+  <tbody>
+    <tr>
+      <th scope="row" style="width: 800px; text-align: left;"><%= item.stock.name_item %></th>
+      <td ><%= item.quantity_ordered %></td>
+      <td>$<%= '%.2f' %item.stock.price %></td>
+      <td>$<%= '%.2f' % (item.quantity_ordered * item.stock.price)%></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td style="text-align: left;">Paid On: <%= shoplist.paid_on %></td>
+      <td></td>
+      <td>Total Price:</td>
+      <td>$<%= '%.2f' %shoplist.total_price %></td>
+      <td><%= button_to 'Duplicate List', user_shoppinglist_history_path, params: {name_shoppinglist: shoplist.name_shoppinglist, oldListId: shoplist.id } %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
+<% end %>
