@@ -1,9 +1,10 @@
+<%= link_to "Start shopping", stocks_path %>
+<br>
 <%= @shoppinglist.inspect %>
-
 <h1>Items in <%= @shoppinglist.name_shoppinglist %></h1>
 
 <ul>
-<% @shoppinglist.items.each do |item| %>
+<% @shoppinglist_items.each do |item| %>
 <li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %>
   <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}%>
   <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"} %>
