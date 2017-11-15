@@ -1,10 +1,15 @@
+<div class="container">
+
+
 <div class="row">
+
   <% @stocks.each do |stock| %>
-  <div class="card-deck col-sm-2", style="padding: 5px;">
-    <div class="card text-center" style="height: 350px;">
-      <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="height: 85px;">
-      <div class="card-block">
-        <h4 class="card-title", style="height: 100px; overflow: overlay;"><%= stock.name_item%> $<%='%.2f' % stock.price%></h4>
+  <div class="card-deck col-sm-2", style="padding: 5px 2px 5px 2px; width:150px; justify:center;">
+    <div class="card text-center" style="height: 360px;">
+      <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="height: 95px;">
+      <div class="card-block" style="font-size:14px;">
+        <h4 class="card-title", style="height: 100px; overflow: overlay; font-size:18px"><%= stock.name_item%></h4>
+        <p>$<%='%.2f' % stock.price%></p>
         <% if user_signed_in? %>
         <%= form_for Item.new do |f| %>
             <%= f.hidden_field :stock_id, value: stock.id %>
@@ -12,13 +17,13 @@
             <%= f.label("Quantity:") %>
             <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
           </div>
-          <div class="field">
-            <%= f.label("Shopping list:") %>
+          <div class="field" >
+            <%= f.label("Select list:") %>
             <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %>
               <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
             <% else %>
               <%= f.fields_for :shoppinglists do |o| %>
-                <%= o.text_field :name_shoppinglist, :value => 'First shopping list' %>
+                <%= o.text_field :name_shoppinglist, :value => 'Default shopping list' %>
               <% end %>
             <% end %>
           </div>

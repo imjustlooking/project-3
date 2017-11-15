@@ -1,5 +1,5 @@
-<h1>Transaction History</h1>
-<%= link_to "Start shopping", stocks_path %>
+<h1>Your past shopping list(s)</h1>
+
 
 <ul>
   <% @shoplists.each do |shoplist| %>
@@ -7,10 +7,11 @@
     <li><%= shoplist.name_shoppinglist %>: <%= shoplist.paid_on %> Total Price: $<%= '%.2f' %shoplist.total_price %></li>
     <ul>
       <% shoplist.items.each do |item| %>
-      <li><%= item.stock.name_item %> X<%= item.quantity_ordered %></li>
+      <li><%= item.stock.name_item %> x <%= item.quantity_ordered %></li>
       <% end  %>
     </ul>
     <%# button_to "duplicate list" %>
     <% end %>
   <% end %>
 </ul>
+<%= link_to "Start shopping again", stocks_path %>
