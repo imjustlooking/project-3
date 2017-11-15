@@ -6,6 +6,7 @@ class ShoppinglistsController < ApplicationController
 
   def show
     @shoppinglist = Shoppinglist.find(params[:id])
+    @shoppinglist_items = @shoppinglist.items.order('id desc')
     @amount = @shoppinglist.total_price*100.to_i
 
   end
@@ -41,7 +42,7 @@ class ShoppinglistsController < ApplicationController
   end
 
   def paid
-    shoppinglist = Shoppinglist.find(params[:id])
+    shoppinglist = Shoppinglist.find(params[:id]).order
     shoppinglist.update(params.require(:paid_on).permit(:paid_on))
   end
 

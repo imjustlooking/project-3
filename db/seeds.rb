@@ -43,15 +43,15 @@
 #   )
 
 # #Create Categories
-# Category.create(name_category: "Fruits")
-# Category.create(name_category: "Meat")
-# Category.create(name_category: "Vegetables")
-# Category.create(name_category: "Frozen")
-# Category.create(name_category: "Bakery")
-# Category.create(name_category: "Organic")
-# Category.create(name_category: "Baby")
-# Category.create(name_category: "Health")
-# Category.create(name_category: "Household")
+Category.create(name_category: "Fruits")
+Category.create(name_category: "Meat")
+Category.create(name_category: "Vegetables")
+Category.create(name_category: "Frozen")
+Category.create(name_category: "Bakery")
+Category.create(name_category: "Organic")
+Category.create(name_category: "Baby")
+Category.create(name_category: "Health")
+Category.create(name_category: "Household")
 
 #Create Items in Stocks
 Stock.create(name_item: "Gala Apples", barcode: 8872732043556, price: 2.60, category_id: 1, img:"https://s3-ap-southeast-1.amazonaws.com/media.redmart.com/newmedia/1600x/i/m/IMG1500_1411027151192.JPG")

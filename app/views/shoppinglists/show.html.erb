@@ -1,16 +1,17 @@
-<%# @shoppinglist.inspect %>
-
+<%= link_to "Start shopping", stocks_path %>
+<br>
+<%= @shoppinglist.inspect %>
 <h1>Items in <%= @shoppinglist.name_shoppinglist %></h1>
-<div class="to in-line" style="display:inline">
-  <ul>
-    <% @shoppinglist.items.each do |item| %>
-    <li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %>
-      <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}%>
-      <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"} %>
-      <%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
-    </li>
-    <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
-    <% end %>
+
+<ul>
+<% @shoppinglist_items.each do |item| %>
+<li><%= item.stock.name_item%>, $<%= item.stock.price%> x<%= item.quantity_ordered %>
+  <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}%>
+  <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"} %>
+  <%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %>
+</li>
+<p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
+<% end %>
 
 
     <p>Your Total: $<%= @shoppinglist.total_price %></p>
