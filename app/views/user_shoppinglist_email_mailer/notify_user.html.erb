@@ -8,17 +8,17 @@
 
     <h1>Hi <%= @user.name %></h1>
 
-    <p>Thank you for your purchase at smartestmart. Transaction details below</p>
+    <p>Thank you for your purchase at smartestmart. We are processing your order for delivery.</p>
 
     <ul>
 
       <% @shoppinglist.items.each do |item| %>
-      <li><%= item.stock.name_item%>, $<%= item.stock.price%> x <%= item.quantity_ordered %>
+      <li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x <%= item.quantity_ordered %>
       </li>
-    <p>Total price: <%= (item.stock.price * item.quantity_ordered) %></p>
+    <p>Total price: <%= '%.2f' % (item.stock.price * item.quantity_ordered) %></p>
 
     <% end %>
-  <p>Your paid shopping cart: $<%= @shoppinglist.total_price %></p>
+  <p>Your paid shopping cart: $<%= '%.2f' % @shoppinglist.total_price %></p>
     </ul>
 
   </body>

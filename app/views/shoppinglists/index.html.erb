@@ -19,7 +19,7 @@
         </h3>
           <p><%= shoplist.items.length %> items</p>
         <div class="card-footer">
-        <%= link_to 'Delete', user_shoppinglist_path(:id => shoplist.id), class: "btn btn-danger", method: :delete, data: {confirm: "Are you sure you want to delete this?"},remote: true %>
+        <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
         </div>
       </div>
     </div>

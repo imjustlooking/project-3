@@ -1,13 +1,15 @@
 <h2>Thank you for purchasing <%= @shoppinglist.name_shoppinglist %> ,
-  you paid <strong>$<%= @amount.to_f/100 %></strong>!
+  you paid <strong>$<%=  '%.2f' % @amount.to_f/100 %></strong>!
   An email has been sent to you.</h2>
   <ul>
 
     <% @shoppinglist.items.each do |item| %>
-    <li><%= item.stock.name_item%>, $<%= item.stock.price%> x <%= item.quantity_ordered %>
+    <li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x <%= item.quantity_ordered %>
     </li>
-  <p>Total arount: <%= (item.stock.price * item.quantity_ordered) %></p>
+  <p>Total amount: <%= '%.2f' % (item.stock.price * item.quantity_ordered) %></p>
 
   <% end %>
-<p>Your paid shopping cart: $<%= @shoppinglist.total_price %></p>
+<p>Your paid shopping cart: $<%= '%.2f' % @shoppinglist.total_price %></p>
   </ul>
+
+<%= link_to "START SHOPPING", stocks_path, class: "btn" %>
