@@ -20,7 +20,7 @@
           <div class="field" >
             <%= f.label("Select list:") %>
             <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %>
-              <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
+              <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center list_slave', :style=> "width: -webkit-fill-available;"} %>
             <% else %>
               <%= f.fields_for :shoppinglists do |o| %>
                 <%= o.text_field :name_shoppinglist, :value => 'Default shopping list' %>

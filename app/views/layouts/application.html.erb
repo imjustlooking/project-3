@@ -38,11 +38,12 @@
           <li class="dropdown-item"><%= link_to "Overview", user_shoppinglists_path(current_user) %></li>
           <div class="dropdown-divider"></div>
           <% current_user.shoppinglists.each do |shoppinglist| %>
-          <% if !shoppinglist.paid_on %>
-            <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
-          <% elsif current_user.shoppinglists.where(:paid_on=> nil).count>0 %>
-            <li class="dropdown-item">You have no List, Please <%= link_to "create", user_shoppinglists_path(current_user) %> one.</li>
+            <% if !shoppinglist.paid_on %>
+              <li class="dropdown-item"><%= link_to shoppinglist.name_shoppinglist, user_shoppinglist_path(current_user, shoppinglist.id) %></li>
+            <% end %>
           <% end %>
+          <% if current_user.shoppinglists.where(:paid_on=> nil).count==0 || current_user.shoppinglists.empty? %>
+            <li class="dropdown-item">You have no List, Please <%= link_to "create", user_shoppinglists_path(current_user) %> one.</li>
           <% end %>
         </div>
       </div>
@@ -68,7 +69,7 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= raw(value) %></div>
       <% end %>
-      <pre><%# params %></pre>
+      <pre><%= params %></pre>
     <%= yield %>
     </div>
     <%# <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
