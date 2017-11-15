@@ -1,21 +1,21 @@
-<%= link_to "Start shopping", stocks_path %>
+<%= link_to "Go back to shopping", stocks_path, class: "btn btn-primary" %>
 <br>
-<h1>Confirm: '<%= @shoppinglist.name_shoppinglist %>'</h1>
+<h1 style="font-size:35px"><%= @shoppinglist.name_shoppinglist %></h1>
 
 <div class="container">
   <table class="table table-hover">
     <thead>
-      <tr>
-        <th>Item</th>
-        <th>Price</th>
-        <th>Amount</th>
-        <th>Subtotal</th>
-        <th>Remove</th>
+      <tr style="font-size:20px">
+        <th>ITEM</th>
+        <th>PRICE</th>
+        <th>AMOUNT</th>
+        <th>SUBTOTAL</th>
+        <th>REMOVE</th>
 
       </tr>
     </thead>
     <% @shoppinglist_items.each do |item| %>
-    <tbody>
+    <tbody >
       <tr>
         <td><%= item.stock.name_item%></td>
         <td>$<%='%.2f' % item.stock.price%></td>
@@ -25,7 +25,7 @@
       </tr>
       <% end %>
       <tr>
-        <td>Your total:</td>
+        <td><strong>Your total:</strong></td>
         <td></td>
         <td></td>
 
@@ -39,9 +39,12 @@
 
   <%= link_to 'Edit', edit_user_shoppinglist_path(:id), class: "btn btn-secondary" %>
 
-  <%= link_to "Back", user_shoppinglists_path(:id) %>
+  <%= link_to "Create another shopping list", user_shoppinglists_path(:id), class: "btn btn-secondary" %>
 </div>
   <%# edit %>
+
+  <br>
+<div class="container">
 
   <%= form_tag charges_test_path(@shoppinglist.id) do %>
   <%# <%= hidden_field_tag ‘amount’, @shoppinglist.total_price * 100 %>
@@ -51,8 +54,9 @@
       <p><%= flash[:error] %></p>
     </div>
     <% end %>
-    <label class="amount">
-      <span>Your total amount: $<%= @amount/100 %></span>
+
+    <label class="amount" style="font-size:30px">
+      <span><strong>Checkout your cart : $<%= @amount/100 %></strong></span>
     </label>
   </article>
 
@@ -62,3 +66,6 @@
   data-amount=<%= @amount %>
   data-locale="auto"></script>
   <% end %>
+
+
+  </div>
