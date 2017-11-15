@@ -21,9 +21,9 @@
         <td><%= item.stock.name_item%></td>
         <td>$<%='%.2f' % item.stock.price%></td>
         <td>
-          <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}, :class => 'btn btn-mini'%>
+          <%= button_to "-", item_path(:id => item.id), method: :put, params: {operation: "minus"}, :class => 'btn btn-mini', form: {style: 'display:inline-block;'}%>
           <%= item.quantity_ordered %>
-          <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"},  :class => 'btn btn-mini' %>
+          <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"},  :class => 'btn btn-mini', form: {style: 'display:inline-block;'}%>
         </td>
         <td>$<%='%.2f' % (item.stock.price * item.quantity_ordered) %></td>
         <td><%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true %></td>

@@ -13,13 +13,12 @@
             <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
           </div>
           <div class="field">
-            <%= current_user.shoppinglists.where(:paid_on=> nil).count %>
             <%= f.label("Shopping list:") %>
             <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %>
               <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
             <% else %>
               <%= f.fields_for :shoppinglists do |o| %>
-                <%= o.text_field :name_shoppinglist %>
+                <%= o.text_field :name_shoppinglist, placeholder: "customise your list" %>
               <% end %>
             <% end %>
           </div>
