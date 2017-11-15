@@ -6,10 +6,10 @@
     <% @shoppinglist.items.each do |item| %>
     <li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x <%= item.quantity_ordered %>
     </li>
-  <p>Total amount: <%= '%.2f' % (item.stock.price * item.quantity_ordered) %></p>
+  <p>Total amount: <%= (item.stock.price * item.quantity_ordered) %></p>
 
   <% end %>
-<p>Your paid shopping cart: $<%= '%.2f' % @shoppinglist.total_price %></p>
+<p>Your paid shopping cart: $<%= @shoppinglist.total_price %></p>
   </ul>
 
 <%= link_to "START SHOPPING", stocks_path, class: "btn" %>
