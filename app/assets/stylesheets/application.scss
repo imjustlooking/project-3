@@ -22,14 +22,13 @@ label {
   list-style-type: none;
   text-align: center;
   padding: 0 ;
-  height: 100px;
+  height: 130px;
   overflow: scroll;
-  border: solid 1px gray;
   margin: 0;
+  width: 318px;
 
 }
 .shoplistbox{
-  width: 223px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -51,4 +50,8 @@ label {
 .navbarlink {
   color:#FF946D;
   background-color:#FAF3E7;
+}
+
+.btn .btn-simple .flipping{
+  margin: 0 59px;
 }
