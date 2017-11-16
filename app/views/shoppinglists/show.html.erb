@@ -25,7 +25,7 @@
           <%= item.quantity_ordered %>
           <%= button_to "+", item_path(:id => item.id), method: :put, params: {operation: "add"},  :class => 'btn btn-mini', form: {style: 'display:inline-block;'}%>
         </td>
-        <td class="table-active">$<%=  '%.2f' % (item.stock.price * item.quantity_ordered) %></td>
+        <td class="table-active">S$<%=  '%.2f' % (item.stock.price * item.quantity_ordered) %></td>
         <td><%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true, class: "text-danger" %></td>
       </tr>
       <% end %>
@@ -33,7 +33,7 @@
         <td>Your total:</td>
         <td></td>
         <td></td>
-        <td class="table-active">$<%= '%.2f' % @shoppinglist.total_price %></td>
+        <td class="table-active">S$<%= '%.2f' % @shoppinglist.total_price %></td>
         <td>
       </tr>
     </tbody>
@@ -61,7 +61,7 @@
     <% end %>
 
     <label class="amount" style="font-size:30px">
-      <span><strong>Checkout your cart : $<%= '%.2f' % (@amount/100).to_f %></strong></span>
+      <span><strong>Checkout your cart : S$<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
   </article>
 
@@ -69,6 +69,7 @@
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
   data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
   data-amount=<%= @amount %>
+  data-currency="sgd"
   data-locale="auto"></script>
   <% end %>
 
