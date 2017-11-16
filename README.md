@@ -48,8 +48,8 @@ Multiple shopping lists can also be created for different occasions to suit vari
 A user can also view their past purchases by looking into their transaction history.
 
 ### Problems and how we solved them..
-* Getting a compatible barcode scanner. We solved it by researching for rails compatible scanner and testing on a separate project file before including it into rails. The camera/scanner also persisted through the app, this was fixed by rendering JS on one page.
-* We needed to track paid history and thought we needed to add another model. However, we decided to include another column in our shopping list model.
+* Getting a compatible barcode scanner. We solved it by researching for a rails compatible scanner and testing on a separate project file before including it into rails. The camera also persisted through the app, this was later fixed by rendering JS on one page.
+* We needed to track paid history and thought to add another model. However, we decided to include another column in our shopping list model, a solution that met our requirements.
 * Instead of having just one cart for payment purposes, we allowed each shopping list to be checked out and paid.
 * Guest could not create and check out shopping list so we decided to scale down and directed guests to register/login before shopping.
 
