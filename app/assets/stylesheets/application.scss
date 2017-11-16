@@ -10,6 +10,14 @@ body {
   color: $primary-color;
 }
 
+p {
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5;
+}
 .shoplistlist {
   list-style-type: none;
   text-align: center;
