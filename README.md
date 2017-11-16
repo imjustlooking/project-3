@@ -32,6 +32,9 @@ Start your shopping experience with us : https://smartestmart.herokuapp.com
 * Item
 * Category
 
+### Wire frame
+![](app/assets/images/wireframe.jpg)
+
 ### Deployment tool
 We used Heroku to deploy our application.
 
