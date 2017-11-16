@@ -1,14 +1,9 @@
 <br>
 
 <%= form_for( :shoppinglist , url: user_shoppinglist_path, method: :put) do |f| %>
-<<<<<<< HEAD
-  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left", style: "font-size: 32px;" %>
+  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left editfield", style: "font-size: 32px;" %>
   <%= f.text_field :name_shoppinglist, class: 'clickedit'%>
   <span style="font-size:25px">&#9998;</span>
-=======
-  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left editfield", style: "font-size: 32px;" %>
-  <%= f.text_field :name_shoppinglist, class: 'clickedit' %>
->>>>>>> 7178dfc3dcfa5910a58ae6ef9729f050a9fb8592
   <div class="clearfix"></div>
   <%# submit_tag "Save changes", class:"btn btn-primary"%>
 <% end %>
