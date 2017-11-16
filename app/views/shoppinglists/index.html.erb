@@ -6,24 +6,64 @@
   <%= f.text_field :name_shoppinglist %>
   <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
+  <br><br>
 <% end %>
 
 <div class="row">
   <% @shoplists.each do |shoplist| %>
   <% unless shoplist.paid_on %>
-  <div class="card-deck col-sm-3">
-    <div class="card text-center">
-      <div class="card-block">
-        <h3 class="card-title", style="height: 99px;">
-          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
-        </h3>
-          <p><%= shoplist.items.length %> items</p>
-        <div class="card-footer">
-        <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="col-md-4 col-sm-6">
+             <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                        </div>
+
+
+
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %></h3>
+                                <p class="text-center"><b><%= shoplist.items.length %></b></p>
+                                <p class="text-center"><%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple flipping">
+                                    <i class="fa fa-mail-forward"></i> Click here to preview
+
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Here your shopping list :</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">You can put yours things here</h4>
+                                <p class="text-center">You can put yours things here</p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple flipping" rel="tooltip" title="Flip Card">
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+                            <div class="social-links text-center">
+                                <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+
+
+
+
+
+
   <% end %>
   <% end %>
-</div>
