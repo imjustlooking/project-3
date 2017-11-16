@@ -1,20 +1,17 @@
-<h1></h1>
+<nav class="navbar navbar-light bg-faded" style="background-color:#CC7657;">
+  <%= link_to 'All', stocks_path, class:"navbar-brand", style:"color:#683C2D"    %>
+ <% @category.each do |category| %>
+  <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"navbar-brand", style:"color:#683C2D" %>
+<% end %>
+</nav>
 <div class="container" style="width:1500px">
 
-
-<nav class="navbar navbar-light bg-faded" style="background-color: #92cc92; width:1085px">
-  <% @category.each do |category| %>
-  <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"navbar-brand" %>
-  </li>
-  <% end %>
-</nav>
 <% if user_signed_in? %>
 <%= form_for Item.new do |f|%>
-<%= f.label("Master shopping list:") %>
+<%= f.label "Master shopping list:", style:'color:#ec701d;' %>
 <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;", :id => 'list_master'} %>
 <% end %>
 <% end %>
-
 
 <% if user_signed_in? && current_user.type_admin %>
   <%= link_to 'Add new stock', new_stock_path  %>
@@ -23,7 +20,7 @@
 <% if @stocks.present? %>
   <%= render "stock" %>
 <% else %>
-  <p>Sorry we do not have this currently.</p>
+  <p>Sorry we are currently out of stock.</p>
 <% end %>
 
 

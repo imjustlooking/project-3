@@ -1,6 +1,6 @@
 <h2>Thank you for shopping with Smart Mart.</h2>
 <p> Your orders in '<%= @shoppinglist.name_shoppinglist %>' are being processed, and we will send you an email shortly to: <%= current_user.email %>.<br>
-To adjust email address, click <%=link_to 'here', edit_user_registration_path(id: current_user.id) %>. <br> For a list of past transactions, click under your user panel >> <%= link_to 'Transaction History', user_shoppinglist_history_path(user_id: current_user.id) %>.</p>
+To adjust your registered email address, click <%=link_to 'here', edit_user_registration_path(id: current_user.id) %>. <br> For a list of past transactions, click under your user panel >> <%= link_to 'Transaction History', user_shoppinglist_history_path(user_id: current_user.id) %>.</p>
 
 <div class="container">
   <table class="table table-hover table-striped">
@@ -26,7 +26,7 @@ To adjust email address, click <%=link_to 'here', edit_user_registration_path(id
         <td class="table-active">S$<%=  '%.2f' % (item.stock.price * item.quantity_ordered) %></td>
       </tr>
       <% end %>
-      <tr class="table-info">
+      <tr class="table-warning">
         <td>Amount paid and received:</td>
         <td></td>
         <td></td>
@@ -37,4 +37,4 @@ To adjust email address, click <%=link_to 'here', edit_user_registration_path(id
 </div>
 
 
-<%= link_to "START SHOPPING AGAIN", stocks_path, class: "btn" %>
+<%= link_to "Back to shopping", stocks_path, class: "btn" %>

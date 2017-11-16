@@ -1,7 +1,7 @@
 <br>
 
 <%= form_for( :shoppinglist , url: user_shoppinglist_path, method: :put) do |f| %>
-  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left editfield", style: "font-size: 32px;" %>
+  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left editfield", style: "font-size: 32px; color:#ec701d" %>
   <%= f.text_field :name_shoppinglist, class: 'clickedit'%>
   <span style="font-size:25px">&#9998;</span>
   <div class="clearfix"></div>
@@ -34,7 +34,7 @@
         <td><%= link_to "X",  item_path(:id => item.id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true, class: "text-danger" %></td>
       </tr>
       <% end %>
-      <tr class="table-info">
+      <tr class="table-warning">
         <td>Your total:</td>
         <td></td>
         <td></td>
@@ -47,8 +47,8 @@
 
 
 
-  <%= link_to "Create another shopping list", user_shoppinglists_path(:id), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', user_shoppinglist_path(:id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},   remote: true, class: "btn btn-secondary" %>
+  <%= link_to "Create another shopping list", user_shoppinglists_path(:id), class: "btn sitebutton" %>
+  <%= link_to 'Delete', user_shoppinglist_path(:id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},  class: "btn sitebutton" %>
 </div>
   <%# edit %>
 
@@ -64,10 +64,11 @@
     </div>
     <% end %>
 
-<% unless @shoppinglist.items.length < 1 || @shoppinglist.paid_on %>
+<% unless (@shoppinglist.items.length < 1 ||  @shoppinglist.paid_on) %>
     <label class="amount" style="font-size:30px">
       <span><strong>Checkout your cart : S$<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
+    &nbsp; &nbsp;
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"

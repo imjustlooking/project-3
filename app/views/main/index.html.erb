@@ -1,13 +1,10 @@
 <div class="row">
       <div class="col-2">
-        <nav class="d-none d-sm-block sidebar" style="background-color:#F3F3F3 ; height:730px;">
+       <nav class="d-none d-sm-block sidebar" style="background-color:#FAF3E7 ; height:730px;">
               <ul class="nav nav-pills flex-column">
-                <li class="nav-item" >
-                  <a class="nav-link active" style="background-color:#E7E7E7; color:black;">Categories <span class="sr-only">(current)</span></a>
-                </li>
                 <% @category.each do |category| %>
                 <li class="nav-item" >
-                <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"nav-link" %>
+                <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"nav-link", style:"color:#CC7657" %>
                 </li>
                 <% end %>
               </ul>
@@ -40,7 +37,7 @@
       </a>
     </div>
     <br>
-    <h2 style="font-size:28px; color:#ec701d; margin:auto">Latest items</h2>
+    <h2 style="font-size:28px; margin:auto">Latest offerings</h2>
     <div class= "row">
 
     <% @stocks.each do |stock| %>
@@ -55,20 +52,20 @@
               <%= f.hidden_field :stock_id, value: stock.id %>
             <div class="field" style="height: 25px;">
               <%= f.label("Quantity:") %>
-              <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
+              <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center", style: 'background-color: #FAF3E7;' %>
             </div>
             <div class="field" >
               <%= f.label("Select list:") %>
               <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %><br>
-                <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;"} %>
+                <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available; background-color: #FAF3E7;"} %>
               <% else %>
                 <%= f.fields_for :shoppinglists do |o| %>
-                  <%= o.text_field :name_shoppinglist, :value => 'Default shopping list', :style => 'width: -webkit-fill-available;' %>
+                  <%= o.text_field :name_shoppinglist, :value => 'Default shopping list', :style => 'width: -webkit-fill-available; background-color: #FAF3E7;' %>
                 <% end %>
               <% end %>
             </div>
             <div class="card-footer" style="height: 72px;">
-              <%= f.submit "Add to list"%>
+              <%= f.submit "+", :class => 'stockcard'%>
               <div class="block">
                 <% if user_signed_in? && current_user.type_admin %>
                 <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
@@ -79,14 +76,12 @@
             <% end %>
             <% else %>
             <br><br>
-            <%= link_to "Log in to continue", new_user_session_path %></li>
+            <%= link_to "Log in to continue", new_user_session_path, class:'stocklogin'  %></li>
             <% end %>
-
         </div>
       </div>
 </div>
     <% end %>
-
 
     </div>
     </div>
