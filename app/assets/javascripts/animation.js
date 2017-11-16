@@ -24,4 +24,12 @@ $(document).on('turbolinks:load', function () {
       $(this).hide();
       $(this).next().show().focus();
   });
+
+  var $list_master = $('#list_master')
+
+  $list_master.change(function(){
+    console.log($list_master.val())
+    $('.list_slave').val($list_master.val())
+  })
+
 });
