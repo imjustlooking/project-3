@@ -9,34 +9,68 @@
   <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
   <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
+  <br><br>
 <% end %>
 
 <div class="row">
   <% @shoplists.each do |shoplist| %>
   <% unless shoplist.paid_on %>
-  <div class="card-deck col-sm-3">
-    <div class="card text-center">
-      <div class="card-block">
-        <h5 class="card-title", style="height: 40px;">
-          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
-        </h5>
-        <br>
-        <ul class="shoplistlist">
-          <% shoplist.items.each do |item| %>
-            <li class="shoplistbox"><%=item.stock.name_item %></li>
-          <% end %>
-        </ul>
-          <p class"numberitem"><%= shoplist.items.length %> items</p>
-        <div class="card-footer">
-          <% if shoplist.items.length<1 %>
-            <%= link_to "Go Shopping", stocks_path %>
-          <% else %>
-            <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="col-md-4 col-sm-6">
+             <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %></h3>
+                                <br>
+                                <p class="text-center"><b><%= shoplist.items.length %> item(s)</b></p>
+                                <button class="btn btn-simple flipping" style="margin: 0 60px;">
+                                  <i class="fa fa-mail-forward"></i> Click here to preview
+                                </button>
+                            </div>
+                            <div class="footer">
+                              <% if shoplist.items.length<1 %>
+                                <%= link_to "Go Shopping", stocks_path %>
+                              <% else %>
+                                <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+                              <% end %>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Here are your shopped item(s) :</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                              <ul class="shoplistlist">
+                                <% if shoplist.items.length<1 %>
+                                  <p>You have no Items. <%= link_to "Go Shopping", stocks_path %>.</p>
+                                <% else %>
+                                  <% shoplist.items.each do |item| %>
+                                  <li class="shoplistbox"><%=item.stock.name_item %></li>
+                                  <% end %>
+                                <% end %>
+                              </ul>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple flipping" rel="tooltip" title="Flip Card" >
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+
+
+
+
+
+
   <% end %>
   <% end %>
-</div>

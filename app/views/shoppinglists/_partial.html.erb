@@ -1,0 +1,98 @@
+<h1>Your shopping lists</h1>
+<%# <p> Here are your pending grocery lists.
+  To preview the enclosed items, scroll through the preview box under each list.<br>
+  Click on the titles to edit/remove quantities, and proceed to checkout.</p> %>
+<%= link_to "Start shopping", stocks_path %>
+
+<%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.label('New list:') %>
+  <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
+  <%# <%= f.text_area :body, size: "60x12" %>
+  <%= f.submit "Create" %>
+  <br><br>
+<% end %>
+
+<div class="row">
+  <% @shoplists.each do |shoplist| %>
+  <% unless shoplist.paid_on %>
+<<<<<<< HEAD
+  <div class="col-md-4 col-sm-6">
+             <div class="card-container manual-flip">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                        </div>
+
+
+
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %></h3>
+                                <p class="text-center"><b><%= shoplist.items.length %></b></p>
+                                <p class="text-center"><%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-simple flipping">
+                                    <i class="fa fa-mail-forward"></i> Click here to preview
+
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">Here your shopping list :</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">You can put yours things here</h4>
+                                <p class="text-center">You can put yours things here</p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <button class="btn btn-simple flipping" rel="tooltip" title="Flip Card">
+                                <i class="fa fa-reply"></i> Back
+                            </button>
+                            <div class="social-links text-center">
+                                <a href="http://deepak646.blogspot.in/" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://deepak646.blogspot.in/" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col sm 3 -->
+
+
+
+
+
+
+=======
+  <div class="card-deck col-sm-3">
+    <div class="card text-center">
+      <div class="card-block">
+        <h5 class="card-title", style="height: 40px;">
+          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
+        </h5>
+        <br>
+        <ul class="shoplistlist">
+          <% shoplist.items.each do |item| %>
+            <li class="shoplistbox"><%=item.stock.name_item %></li>
+          <% end %>
+        </ul>
+          <p class"numberitem"><%= shoplist.items.length %> items</p>
+        <div class="card-footer">
+          <% if shoplist.items.length<1 %>
+            <%= link_to "Go Shopping", stocks_path %>
+          <% else %>
+            <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> c05ccd8ad2eddf62ec008c9550b2bf8e3bed7675
+  <% end %>
+  <% end %>

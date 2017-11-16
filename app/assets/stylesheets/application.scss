@@ -22,14 +22,13 @@ label {
   list-style-type: none;
   text-align: center;
   padding: 0 ;
-  height: 100px;
+  height: 130px;
   overflow: scroll;
-  border: solid 1px gray;
   margin: 0;
+  width: 318px;
 
 }
 .shoplistbox{
-  width: 223px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -53,4 +52,10 @@ label {
   background-color:#FAF3E7;
 }
 
+<<<<<<< HEAD
 .navbar-nav > li > .dropdown-menu {     background-color: #FF946D;  }
+=======
+.btn .btn-simple .flipping{
+  margin: 0 59px;
+}
+>>>>>>> 4c23be7f09cbd514a465d2331ea64a4925011ca9

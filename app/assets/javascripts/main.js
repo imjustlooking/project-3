@@ -1,5 +1,16 @@
 $(document).on('turbolinks:load', function () {
 
+  $('.flipping').on('click', function() {
+
+    var $card = $(this).closest('.card-container')
+    console.log($card)
+    if($card.hasClass('hover')){
+      $card.removeClass('hover')
+    } else {
+      $card.addClass('hover')
+    }
+  })
+
   var results = {}
   var video = $('#cam_output')[0]
   var constraints = { video: true }
