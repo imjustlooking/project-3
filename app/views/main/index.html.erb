@@ -1,13 +1,12 @@
 <div class="row">
       <div class="col-2">
-        <nav class="d-none d-sm-block sidebar" style="background-color:#F3F3F3 ; height:730px;">
+<%#         <nav class="d-none d-sm-block sidebar" style="background-color:#EFEFD0 ; height:730px;">
+ %>          <nav class="d-none d-sm-block sidebar" style="background-color:#FAF3E7 ; height:730px;">
               <ul class="nav nav-pills flex-column">
-                <li class="nav-item" >
-                  <a class="nav-link active" style="background-color:#E7E7E7; color:black;">Categories <span class="sr-only">(current)</span></a>
-                </li>
+
                 <% @category.each do |category| %>
                 <li class="nav-item" >
-                <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"nav-link" %>
+                <%= link_to category.name_category, stocks_type_path(:id => category.id), class:"nav-link", style:"color:#004E89" %>
                 </li>
                 <% end %>
               </ul>
