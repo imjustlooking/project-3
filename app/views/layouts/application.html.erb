@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body class="stocks show" style="background-color:#FAF3E7">
@@ -24,6 +24,10 @@
       <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline; color:#FF946D; background-color:#FAF3E7;", size: 40%>
       <%= submit_tag 'Search', class: "btn navbarlink", name: nil %>
       <% end %>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+
       <%= button_to 'Barcode', stocks_show_path, class: "btn navbarlink", method: :get %>
     </ul>
     <ul class ="nav navbar-nav pull-sm-right">
@@ -45,7 +49,7 @@
             <% end %>
           <% end %>
           <% if current_user.shoppinglists.where(:paid_on=> nil).count==0 || current_user.shoppinglists.empty? %>
-            <li class="dropdown-item">You have no List, Please <%= link_to "create", user_shoppinglists_path(current_user) %> one.</li>
+            <li class="dropdown-item">You have no lists, create one <%= link_to "here", user_shoppinglists_path(current_user) %>.</li>
           <% end %>
         </div>
       </div>
@@ -73,11 +77,19 @@
       <% end %>
     <%= yield %>
     </div>
-    <%# <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
+<%#      <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
+ %>       <%# <footer class="navbar navbar-expand-lg navbar-light sitebutton">
+
         <div class="container-fluid p-0 p-md-2">
           <p class="text-center">Put together by <a href="https://github.com/imjustlooking" target="_blank" rel="noopener">Gab's angels</a>, with <a href="http://getbootstrap.com/" target="_blank">Bootstrap 4</a> </p>
         </div>
-    </footer>  TODO: Footer to be adjusted%>
+    </footer> %>
+<br>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Brought to you by Team Dang Dang (<a href="https://github.com/Persisn">Persis Ngan</a>, <a href="https://github.com/thamjieying">Jieying Tham</a>, <a href="https://github.com/imjustlooking">Gabriel Lu</a>) on Rails 5 and Bootstrap 4.</span>
+      </div>
+    </footer>
 
   </body>
 </html>

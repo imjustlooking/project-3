@@ -2,10 +2,10 @@
 <h1>Transaction History</h1>
 <%# <p> Here are your past purchases with Smart Mart. <br> To re-order a list, click on the corresponding button beside it. </p>
 <br> %>
-<%= link_to "Back to shopping", stocks_path, class: "btn btn-primary" %>
+<%= link_to "Back to shopping", stocks_path, class: "btn sitebutton" %>
 <% @shoplists.each do |shoplist| %>
 <% if shoplist.paid_on %>
-<h1>Shopping List:<%= shoplist.name_shoppinglist %></h1>
+<h2>Shopping List: <%= shoplist.name_shoppinglist %></h2>
 
 <table class="table-hover table-striped" style="text-align: center;">
   <thead class="thead-inverse">
@@ -30,7 +30,7 @@
       <td></td>
       <td></td>
       <td>S$<%= '%.2f' %shoplist.total_price %></td>
-      <td><%= button_to 'Duplicate List', user_shoppinglist_history_path, params: {name_shoppinglist: shoplist.name_shoppinglist, oldListId: shoplist.id } %></td>
+      <td><%= button_to 'Duplicate List', user_shoppinglist_history_path, params: {name_shoppinglist: shoplist.name_shoppinglist, oldListId: shoplist.id }, class: 'sitebutton' %></td>
     </tr>
   </tbody>
 </table>

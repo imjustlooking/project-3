@@ -2,15 +2,15 @@
 <%# <p> Here are your pending grocery lists.
   To preview the enclosed items, scroll through the preview box under each list.<br>
   Click on the titles to edit/remove quantities, and proceed to checkout.</p> %>
-<%= link_to "Start shopping", stocks_path %>
 
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.label('New list:') %>
+  <%= f.label 'New list:', style:"color:#ec701d" %>
   <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
   <%# <%= f.text_area :body, size: "60x12" %>
-  <%= f.submit "Create" %>
+  <%= f.submit "Create", class:'sitebutton' %>
   <br><br>
 <% end %>
+<%= link_to "Let's go shopping", stocks_path, class:'btn navbarlink' %>
 
 <div class="row">
   <% @shoplists.each do |shoplist| %>
@@ -23,11 +23,11 @@
                         </div>
                         <div class="content">
                             <div class="main">
-                                <h3 class="name">  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %></h3>
+                                <h3 class="name">  <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id), class:'cardlink' %></h3>
                                 <br>
                                 <p class="text-center"><b><%= shoplist.items.length %> item(s)</b></p>
                                 <button class="btn btn-simple flipping" style="margin: 0 60px;">
-                                  <i class="fa fa-mail-forward"></i> Click here to preview
+                                  <i class="fa fa-mail-forward"></i> Preview list here
                                 </button>
                             </div>
                             <div class="footer">
@@ -42,7 +42,7 @@
 
                     <div class="back">
                         <div class="header">
-                            <h5 class="motto">Here are your shopped item(s) :</h5>
+                            <h5 class="motto">Your list item(s) :</h5>
                         </div>
                         <div class="content">
                             <div class="main">

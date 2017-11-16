@@ -12,6 +12,8 @@ body {
 
 p {
     margin: 0;
+    color:#ec701d;
+
 }
 
 label {
@@ -51,8 +53,51 @@ label {
   color:#FF946D;
   background-color:#FAF3E7;
 }
+.sitebutton{
+background-color:#FF946D;
+color:#FAF3E7
+}
+.sitebutton:hover{
+  color:#76380e
+}
+.stockcard {
+  background-color: Transparent;
+  color:#ec701d;
+  border: outset;
+  height: 100%;
+  width: 100%;
+  font-size: 2em;
+}
 
-
+.stocklogin {
+  background-color: Transparent;
+  color:#ec701d;
+  border: outset;
+  height: 100%;
+  width: 100%;
+}
 .btn .btn-simple .flipping{
   margin: 0 59px;
+}
+
+h1, h2 {
+  color:#ec701d;
+}
+
+.cardlink {
+  color:#CC7657;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #FAF3E7
+}
+a:hover {
+    color: #76380e;
+    text-decoration: none;
+}
+.btn:hover {
+  color: #76380e;
+}
+
+a {
+  color: #CC7657;
 }
