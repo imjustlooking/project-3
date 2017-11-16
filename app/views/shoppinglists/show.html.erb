@@ -1,9 +1,14 @@
 <br>
 
 <%= form_for( :shoppinglist , url: user_shoppinglist_path, method: :put) do |f| %>
+<<<<<<< HEAD
   <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left", style: "font-size: 32px;" %>
   <%= f.text_field :name_shoppinglist, class: 'clickedit'%>
   <span style="font-size:25px">&#9998;</span>
+=======
+  <%= f.label  @shoppinglist.name_shoppinglist, class: "pull-left editfield", style: "font-size: 32px;" %>
+  <%= f.text_field :name_shoppinglist, class: 'clickedit' %>
+>>>>>>> 7178dfc3dcfa5910a58ae6ef9729f050a9fb8592
   <div class="clearfix"></div>
   <%# submit_tag "Save changes", class:"btn btn-primary"%>
 <% end %>
@@ -48,7 +53,7 @@
 
 
   <%= link_to "Create another shopping list", user_shoppinglists_path(:id), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', user_shoppinglist_path(:id), method: :delete, data: {confirm: "Are you sure you want to delete this?"}, remote: true, class: "btn btn-secondary" %>
+  <%= link_to 'Delete', user_shoppinglist_path(:id), method: :delete, data: {confirm: "Are you sure you want to delete this?"},   remote: true, class: "btn btn-secondary" %>
 </div>
   <%# edit %>
 
