@@ -12,7 +12,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-  <a class="navbar-brand" id= "mainTitle" href="/" style= "color:#683C2D">Smart Mart</a>
+  <a class="navbar-brand" id= "mainTitle" href="/" style= "color:#824B38">Smart Mart</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01" >
     <ul class="nav navbar-nav pull-sm-left" >
       <%# <li class="nav-item nav-link"> %><%= link_to "Start shopping", stocks_path, class: "btn", method: :get, style: "color:#FF946D; background-color:#FAF3E7;" %><%# </li> %>
@@ -20,15 +20,15 @@
     <ul class="nav navbar-nav mx-auto">
       <%= form_tag(stocks_path, :id => 'search', method: :get) do %>
       <%= hidden_field_tag :button , "searching" %>
-      <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline;", size: 40%>
+      <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline; color:#FF946D; background-color:#FAF3E7;", size: 40%>
       <%= submit_tag 'Search', class: "btn", name: nil, style: "color:#FF946D; background-color:#FAF3E7;" %>
       <% end %>
       <%= button_to 'Barcode', stocks_show_path, class: "btn ", method: :get, style: "color:#FF946D; background-color:#FAF3E7;" %>
     </ul>
     <ul class ="nav navbar-nav pull-sm-right">
       <% unless user_signed_in? %>
-        <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path %></li>
-        <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path %></li>
+        <li class="nav-item nav-link"><%= link_to "Login", new_user_session_path, class: 'btn navbarlink' %></li>
+        <li class="nav-item nav-link"><%= link_to "Register", new_user_registration_path, class: 'btn navbarlink' %></li>
       <% else %>
       <div class="dropdown show">
         <a class="btn nav-link dropdown-toggle" href="/edit" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#FAF3E7;">
