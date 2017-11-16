@@ -14,7 +14,6 @@ class ShoppinglistsController < ApplicationController
     @new_shoppinglist = current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
     flash[:info] = @new_shoppinglist.name_shoppinglist + " created. Fill up your shopping list!"
     redirect_to stocks_path
-
     # render :json => current_user.shoppinglists
   end
 
@@ -51,7 +50,7 @@ class ShoppinglistsController < ApplicationController
         new_item.shoppinglist_id = new_shoppinglist.id
         new_item.save
     end
-    flash[:info]="list is duplicated"
+    flash[:info]="#{view_context.link_to(params[:name_shoppinglist], user_shoppinglist_path(:user_id => current_user.id, :id => new_shoppinglist.id))} is duplicated into #{view_context.link_to('your lists', user_shoppinglists_path(:user_id => current_user.id))}. "
     redirect_back(fallback_location: root_path)
   end
 

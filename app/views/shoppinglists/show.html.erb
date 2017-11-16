@@ -1,4 +1,3 @@
-<%= link_to "Go back to shopping", stocks_path, class: "btn btn-primary" %>
 <br>
 
 <%= form_for( :shoppinglist , url: user_shoppinglist_path, method: :put) do |f| %>
@@ -68,14 +67,14 @@
     <label class="amount" style="font-size:30px">
       <span><strong>Checkout your cart : S$<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
+    data-amount=<%= @amount %>
+    data-currency="sgd"
+    data-locale="auto"></script>
   </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
-  data-amount=<%= @amount %>
-  data-currency="sgd"
-  data-locale="auto"></script>
   <% end %>
 
 
