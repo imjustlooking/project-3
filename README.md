@@ -1,13 +1,13 @@
-# Project 3: SmartestMart
+# Project 3: Smartest Mart
 
-Demo Here:
+Start your shopping experience with us : https://smartestmart.herokuapp.com
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+# What you need to make it work..
 
-* Ruby version
+* Ruby version- 2.4.2
 
 * System dependencies
 
@@ -23,4 +23,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Entity Relationship Diagram
+![](app/assets/images/ERD.jpg)
+
+* Key functions
