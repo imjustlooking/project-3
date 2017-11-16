@@ -5,21 +5,21 @@
 
   <% @stocks.each do |stock| %>
   <div class="card-deck col-sm-2", style="padding: 5px 2px 5px 2px; width:150px; justify:center;">
-    <div class="card text-center" style="height: 360px;">
-      <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="height: 95px;">
+    <div class="card text-center" style="height: 380px;">
+      <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="min-height: 95px;">
       <div class="card-block" style="font-size:14px;">
-        <h4 class="card-title", style="height: 100px; overflow: overlay; font-size:18px"><%= stock.name_item%></h4>
+        <h4 class="card-title", style="height: 83px; overflow: overlay; font-size:18px"><%= stock.name_item%></h4>
         <p>$<%='%.2f' % stock.price%></p>
         <% if user_signed_in? %>
         <%= form_for Item.new do |f| %>
             <%= f.hidden_field :stock_id, value: stock.id %>
-          <div class="field" style="height: 25px;">
+          <div class="field" style="height: 25px; margin: 5px;">
             <%= f.label("Quantity:") %>
             <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
           </div>
           <div class="field" >
             <%= f.label("Select list:") %>
-            <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %>
+            <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %><br> 
               <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center list_slave', :style=> "width: -webkit-fill-available;"} %>
             <% else %>
               <%= f.fields_for :shoppinglists do |o| %>
