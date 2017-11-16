@@ -64,7 +64,7 @@
     </div>
     <% end %>
 
-<% unless @shoppinglist.paid_on %>
+<% unless (@shoppinglist.items.length < 1 ||  @shoppinglist.paid_on) %>
     <label class="amount" style="font-size:30px">
       <span><strong>Checkout your cart : S$<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
