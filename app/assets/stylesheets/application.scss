@@ -1,2 +1,54 @@
 @import "bootstrap";
 @import "main";
+@import url('https://fonts.googleapis.com/css?family=Hind+Siliguri');
+
+$font-stack: 'Hind Siliguri', sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+p {
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5;
+}
+.shoplistlist {
+  list-style-type: none;
+  text-align: center;
+  padding: 0 ;
+  height: 100px;
+  overflow: scroll;
+  border: solid 1px gray;
+  margin: 0;
+
+}
+.shoplistbox{
+  width: 223px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.numberitem{
+  margin: 0;
+}
+.dropdown-header{
+  padding: 2px;
+}
+
+.editfield:hover {
+    background: #f2f5ff;
+    border-radius:5px;
+    padding:2px 4px;
+}
+
+.navbarlink {
+  color:#FF946D;
+  background-color:#FAF3E7;
+}

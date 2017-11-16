@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     put 'shoppinglist/:id', to: 'shopplinglist#paid'
     resources :shoppinglists
       get 'shoppinglist/history', to: 'shoppinglists#history'
+      post 'shoppinglist/history', to: 'shoppinglists#duplicate'
   end
 
   #stock routes

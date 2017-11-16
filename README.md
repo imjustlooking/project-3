@@ -1,18 +1,6 @@
-Changing readme- Persis
+# Project 3: SmartestMart
 
-# Project 3 -update test
-Persis Jieying Gabriel
-# README
-
-gabriel test 
-test test
-
-Thamjieying wants to edit the readme
-
-
-Thamjieying wants to edit the readme
-
-jieying want to change README
+Demo Here:
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

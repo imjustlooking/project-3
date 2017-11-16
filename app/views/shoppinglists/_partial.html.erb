@@ -15,6 +15,7 @@
 <div class="row">
   <% @shoplists.each do |shoplist| %>
   <% unless shoplist.paid_on %>
+<<<<<<< HEAD
   <div class="col-md-4 col-sm-6">
              <div class="card-container manual-flip">
                 <div class="card">
@@ -68,5 +69,30 @@
 
 
 
+=======
+  <div class="card-deck col-sm-3">
+    <div class="card text-center">
+      <div class="card-block">
+        <h5 class="card-title", style="height: 40px;">
+          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
+        </h5>
+        <br>
+        <ul class="shoplistlist">
+          <% shoplist.items.each do |item| %>
+            <li class="shoplistbox"><%=item.stock.name_item %></li>
+          <% end %>
+        </ul>
+          <p class"numberitem"><%= shoplist.items.length %> items</p>
+        <div class="card-footer">
+          <% if shoplist.items.length<1 %>
+            <%= link_to "Go Shopping", stocks_path %>
+          <% else %>
+            <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> c05ccd8ad2eddf62ec008c9550b2bf8e3bed7675
   <% end %>
   <% end %>

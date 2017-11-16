@@ -14,12 +14,6 @@ $(document).on('turbolinks:load', function () {
   var results = {}
   var video = $('#cam_output')[0]
   var constraints = { video: true }
-  var $list_master = $('#list_master')
-
-  $list_master.change(function(){
-    console.log($list_master.val())
-    $('.list_slave').val($list_master.val())
-  })
 
   function handleSuccess (stream) {
     window.stream = stream // only to make stream available to console, we require this to turn off the camera feed
