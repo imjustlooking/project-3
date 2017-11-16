@@ -4,7 +4,20 @@
 .shoplistlist {
   list-style-type: none;
   text-align: center;
-  padding: 0px;
+  padding: 0 ;
   height: 100px;
   overflow: scroll;
+  border: solid 1px gray;
+  margin: 0;
+
+}
+.shoplistbox{
+  width: 223px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.numberitem{
+  margin: 0;
 }
