@@ -3,6 +3,6 @@ class UserShoppinglistEmailMailer < ApplicationMailer
     @user = user
     @shoppinglist = shoppinglist
 
-    mail(to: @user.email, subject: "Thank you for order" )
+    mail(to: @user.email, subject: "Thank you for your order" )
   end
 end
