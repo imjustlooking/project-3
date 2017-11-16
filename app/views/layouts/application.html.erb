@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project3</title>
+    <title>SmartestMart</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="stocks show">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#F37F0B;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +20,7 @@
     <ul class="nav navbar-nav mx-auto">
       <%= form_tag(stocks_path, :id => 'search', method: :get) do %>
       <%= hidden_field_tag :button , "searching" %>
-      <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline;"%>
+      <%= text_field_tag :term, params[:term], placeholder: "Enter keyword or barcode", style: "display: inline;", size: 120%>
       <%= submit_tag 'Search', class: "btn", name: nil %>
       <% end %>
       <%= button_to 'Barcode', stocks_show_path, class: "btn ", method: :get %>
