@@ -3,7 +3,7 @@
 
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.label('Shopping List name:') %>
-  <%= f.text_field :name_shoppinglist %>
+  <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
   <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
 <% end %>
@@ -14,16 +14,16 @@
   <div class="card-deck col-sm-3">
     <div class="card text-center">
       <div class="card-block">
-        <h5 class="card-title", style="height: 99px;">
+        <h5 class="card-title", style="height: 40px;">
           List Name:<br><%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
         </h5>
         <br>
         <ul class="shoplistlist">
           <% shoplist.items.each do |item| %>
-            <li><%=item.stock.name_item %> $<%= '%.2f' %item.stock.price %>X<%=item.quantity_ordered %></li>
+            <li class="shoplistbox"><%=item.stock.name_item %></li>
           <% end %>
         </ul>
-          <p><%= shoplist.items.length %> items</p>
+          <p class"numberitem"><%= shoplist.items.length %> items</p>
         <div class="card-footer">
         <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
         </div>
