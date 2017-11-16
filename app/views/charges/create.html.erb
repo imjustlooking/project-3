@@ -1,6 +1,6 @@
 <h2>Thank you for shopping with Smart Mart.</h2>
 <p> Your orders in '<%= @shoppinglist.name_shoppinglist %>' are being processed, and we will send you an email shortly to: <%= current_user.email %>.<br>
-If you'd like to adjust your email address, please click <%=link_to 'here', edit_user_registration_path(id: current_user.id) %>. </p>
+To adjust email address, click <%=link_to 'here', edit_user_registration_path(id: current_user.id) %>. <br> For a list of past transactions, click under your user panel >> <%= link_to 'Transaction History', user_shoppinglist_history_path(user_id: current_user.id) %>.</p>
 
 <div class="container">
   <table class="table table-hover table-striped">

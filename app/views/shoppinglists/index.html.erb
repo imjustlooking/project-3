@@ -1,8 +1,11 @@
-<h1>Your shopping list</h1>
+<h1>Your shopping lists</h1>
+<%# <p> Here are your pending grocery lists.
+  To preview the enclosed items, scroll through the preview box under each list.<br>
+  Click on the titles to edit/remove quantities, and proceed to checkout.</p> %>
 <%= link_to "Start shopping", stocks_path %>
 
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-  <%= f.label('Shopping List name:') %>
+  <%= f.label('New list:') %>
   <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
   <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>

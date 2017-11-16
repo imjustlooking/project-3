@@ -1,7 +1,7 @@
-<%= link_to "Go back to shopping", stocks_path, class: "btn btn-primary" %>
 <br>
 <h1 style="font-size:35px; color:#000080"><%= @shoppinglist.name_shoppinglist %></h1>
-
+<p> Click on the +, - buttons to adjust quantity, and X to remove an entry.<br> To checkout, click on Pay With Card. </p>
+<%= link_to "Back to shopping", stocks_path, class: "btn btn-primary" %>
 <div class="container">
   <table class="table table-hover table-striped">
     <thead>
@@ -63,14 +63,14 @@
     <label class="amount" style="font-size:30px">
       <span><strong>Checkout your cart : S$<%= '%.2f' % (@amount/100).to_f %></strong></span>
     </label>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
+    data-amount=<%= @amount %>
+    data-currency="sgd"
+    data-locale="auto"></script>
   </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-description="Total amount for <%= @shoppinglist.name_shoppinglist %>"
-  data-amount=<%= @amount %>
-  data-currency="sgd"
-  data-locale="auto"></script>
   <% end %>
 
 
