@@ -1,4 +1,4 @@
-<h1>Your shopping list</h1>
+<h1>Your shopping list(s)</h1>
 <%= link_to "Start shopping", stocks_path %>
 
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
@@ -15,7 +15,7 @@
     <div class="card text-center">
       <div class="card-block">
         <h5 class="card-title", style="height: 40px;">
-          List Name:<br><%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
+          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
         </h5>
         <br>
         <ul class="shoplistlist">
@@ -25,7 +25,11 @@
         </ul>
           <p class"numberitem"><%= shoplist.items.length %> items</p>
         <div class="card-footer">
-        <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+          <% if shoplist.items.length<1 %>
+            <%= link_to "Go Shopping", stocks_path %>
+          <% else %>
+            <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>
+          <% end %>
         </div>
       </div>
     </div>
