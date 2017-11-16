@@ -14,9 +14,15 @@
   <div class="card-deck col-sm-3">
     <div class="card text-center">
       <div class="card-block">
-        <h3 class="card-title", style="height: 99px;">
-          <%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
-        </h3>
+        <h5 class="card-title", style="height: 99px;">
+          List Name:<br><%= link_to shoplist.name_shoppinglist, user_shoppinglist_path(:id => shoplist.id) %>
+        </h5>
+        <br>
+        <ul class="shoplistlist">
+          <% shoplist.items.each do |item| %>
+            <li><%=item.stock.name_item %> $<%= '%.2f' %item.stock.price %>X<%=item.quantity_ordered %></li>
+          <% end %>
+        </ul>
           <p><%= shoplist.items.length %> items</p>
         <div class="card-footer">
         <%= link_to "Checkout", user_shoppinglist_path(:id => shoplist.id) %>

@@ -51,6 +51,7 @@ class ShoppinglistsController < ApplicationController
         new_item.shoppinglist_id = new_shoppinglist.id
         new_item.save
     end
+    flash[:info]="list is duplicated"
     redirect_back(fallback_location: root_path)
   end
 
