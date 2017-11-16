@@ -42,13 +42,13 @@
     <br>
     <h2 style="font-size:28px; color:#ec701d; margin:auto">Latest items</h2>
     <div class= "row">
- 
+
     <% @stocks.each do |stock| %>
     <div class="card-deck col-sm-2", style="padding: 5px 2px 5px 2px; width:150px; justify:center;">
       <div class="card text-center" style="height: 385px;">
         <img class="card-img-top" src="<%= stock.img %>" alt="Card image cap" style="height: 130px;">
         <div class="card-block" style="font-size:14px;">
-          <h4 class="card-title", style="height: 62px; overflow: overlay; font-size:18px"><%= stock.name_item%></h4>
+          <h4 class="card-title", style="height: 62px; overflow: hidden; font-size:18px"><%= stock.name_item%></h4>
           <p style="margin-bottom: 0">$<%='%.2f' % stock.price%></p>
           <% if user_signed_in? %>
           <%= form_for Item.new do |f| %>
