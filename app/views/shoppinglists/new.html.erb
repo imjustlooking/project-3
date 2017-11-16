@@ -1,8 +1,6 @@
 <h1>Shoppinglists#index</h1>
 <%= link_to "Start shopping", stocks_path %>
 
-
-
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.label('Shopping List name:') %>
   <%= f.text_field :name_shoppinglist %>

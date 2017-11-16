@@ -1,15 +1,40 @@
-<h2>Thank you for purchasing <%= @shoppinglist.name_shoppinglist %> ,
-  you paid <strong>$<%= '%.2f' % @shoppinglist.total_price %></strong>!
-  An email has been sent to you.</h2>
-  <ul>
+<h2>Thank you for shopping with Smart Mart.</h2>
+<p> Your orders in '<%= @shoppinglist.name_shoppinglist %>' are being processed, and we will send you an email shortly to: <%= current_user.email %>.<br>
+If you'd like to adjust your email address, please click <%=link_to 'here', edit_user_registration_path(id: current_user.id) %>. </p>
 
-    <% @shoppinglist.items.each do |item| %>
-    <li><%= item.stock.name_item%>, $<%= '%.2f' % item.stock.price%> x <%= item.quantity_ordered %>
-    </li>
-  <p>Total amount: $<%= '%.2f' % (item.stock.price * item.quantity_ordered) %></p>
+<div class="container">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <% @shoppinglist_items.each do |item| %>
+      <% if @shoppinglist_items.length == 0 %>
+      <td> There are no items in your shopping list. </td>
+      <% end %>
+    <tbody>
+      <tr>
+        <td><%= item.stock.name_item%></td>
+        <td>$<%= '%.2f' % item.stock.price%></td>
+        <td>
+          <%= item.quantity_ordered %>
+        </td>
+        <td class="table-active">S$<%=  '%.2f' % (item.stock.price * item.quantity_ordered) %></td>
+      </tr>
+      <% end %>
+      <tr class="table-info">
+        <td>Amount paid and received:</td>
+        <td></td>
+        <td></td>
+        <td class="table-active">S$<%= '%.2f' % @shoppinglist.total_price %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <% end %>
-<p>Your paid shopping cart: $<%= @shoppinglist.total_price %></p>
-  </ul>
 
 <%= link_to "START SHOPPING AGAIN", stocks_path, class: "btn" %>

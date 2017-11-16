@@ -6,6 +6,7 @@ class ChargesController < ApplicationController
   def create
     @user =current_user
     @shoppinglist = Shoppinglist.find(params[:id])
+    @shoppinglist_items = @shoppinglist.items.order('id desc')
     @amount = (@shoppinglist.total_price*100).to_i
 
   customer = Stripe::Customer.create(
@@ -17,9 +18,9 @@ class ChargesController < ApplicationController
     customer: customer.id,
     amount: @amount,
     description: 'Rails Stripe customer',
-    currency: 'usd'
+    currency: 'sgd'
   )
-  
+
   @shoppinglist.update(params.permit(:paid_on))
   @shoppinglist.update_column(:paid_on, DateTime.now.to_s)
 
