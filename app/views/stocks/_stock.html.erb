@@ -15,12 +15,12 @@
             <%= f.hidden_field :stock_id, value: stock.id %>
           <div class="field" style="height: 25px; margin: 5px;">
             <%= f.label("Quantity:") %>
-            <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center" %>
+            <%= f.number_field :quantity_ordered, value: 1, min: 1, max:100, class: "col-5 text-center", style:'background-color: #FAF3E7;' %>
           </div>
           <div class="field" >
             <%= f.label("Select list:") %>
-            <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %><br> 
-              <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center list_slave', :style=> "width: -webkit-fill-available;"} %>
+            <% if current_user.shoppinglists.where(:paid_on=> nil).count > 0 %><br>
+              <%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center list_slave', :style=> "width: -webkit-fill-available; background-color: #FAF3E7;"} %>
             <% else %>
               <%= f.fields_for :shoppinglists do |o| %>
                 <%= o.text_field :name_shoppinglist, :value => 'Default shopping list' %>
@@ -28,7 +28,7 @@
             <% end %>
           </div>
           <div class="card-footer" style="height: 72px;">
-            <%= f.submit "Add to list"%>
+            <%= f.submit "+", :class => 'stockcard'%>
             <div class="block">
               <% if user_signed_in? && current_user.type_admin %>
               <%= link_to "Edit", edit_stock_path(:id => stock.id) %>
@@ -39,7 +39,7 @@
           <% end %>
           <% else %>
           <br><br>
-          <%= link_to "Log in to continue", new_user_session_path %></li>
+          <%= link_to "Log in to continue", new_user_session_path, class:'stocklogin' %></li>
           <% end %>
 
       </div>

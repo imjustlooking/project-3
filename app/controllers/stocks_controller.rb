@@ -10,7 +10,7 @@ has_scope :category_type
         @stocks = Stock.search(params[:term]).order('name_item asc')
       else
         flash[:danger] = "No matches for '" + params[:term] + "'."
-        redirect_to session.delete(:return_to)
+        redirect_back(fallback_location: root_path)
       end
     else
       @stocks = apply_scopes(Stock).all

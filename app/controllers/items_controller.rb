@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
       #decreasing ordering quantity by 1
       @update_item.subtract
     else
-      flash[:danger] = "T his is the minimum quantity of #{@update_item.stock.name_item}. To remove completely, click on the corresponding 'X'."
+      flash[:danger] = "This is the minimum quantity of #{@update_item.stock.name_item}. To remove completely, click on the corresponding 'X'."
     end
       redirect_back(fallback_location: root_path)
   end
