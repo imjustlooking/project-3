@@ -59,3 +59,8 @@ A user can also view their past purchases by looking into their transaction hist
 * Increase the precision of the camera barcode
 * Include more filtering options (i.e by price range, brand and recipes)
 * To scale up by adding another model to store our transaction history
+
+### Team members
+* Tham Jieying
+* Gabriel Lu
+* Persis Ngan
