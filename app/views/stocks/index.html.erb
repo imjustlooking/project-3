@@ -7,9 +7,10 @@
 <div class="container" style="width:1500px">
 
 <% if user_signed_in? %>
-<%= form_for Item.new do |f|%>
-<%= f.label "Master shopping list:", style:'color:#ec701d;' %>
-<%= f.collection_select :shoppinglist_id, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;", :id => 'list_master'} %>
+<%= form_tag({controller: "stocks", action: "master_list"}, {:method => "post"}) do%> <%# just a placeholder for choosing of masterlist %>
+<%= label_tag :shoppinglist, "Default shopping list:", style:'color:#ec701d;' %>
+<%= collection_select :shoppinglist, :master_list_value, current_user.shoppinglists.where(:paid_on=> nil).order(:updated_at),:id, :name_shoppinglist,{:selected => $default_select}, {:class=>'col-5 text-center', :style=> "width: -webkit-fill-available;", id: 'list_master'}  %>
+<%= submit_tag "Change", class:'sitebutton'%>
 <% end %>
 <% end %>
 

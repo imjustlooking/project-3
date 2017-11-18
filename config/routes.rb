@@ -20,11 +20,14 @@ Rails.application.routes.draw do
   end
 
   #stock routes
-  resources :stocks
+  resources :stocks do
+  collection do
+    post :master_list, :as => :master_list
+  end
+end
   #custom routes for barcode scanning page
   get '/stocks/show', to: 'stocks#show'
   get '/stocks/?category_type=:id', to: 'stocks#show', as: 'stocks_type'
-
   #item routes
   resources :items
   # post '/items/create', to: 'items#create'

@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
 before_action :authenticate_user!, only: [:create, :new, :edit, :update, :destroy]
 has_scope :category_type
+
   def index
     @category = Category.all
     session[:return_to] ||= request.referer
@@ -15,6 +16,12 @@ has_scope :category_type
     else
       @stocks = apply_scopes(Stock).all
     end
+  end
+
+  def master_list
+    p params[:shoppinglist][:master_list_value]
+    $default_select = params[:shoppinglist][:master_list_value] #global variable for adjusting list_master
+    redirect_to action:'index'
   end
 
   def stock_params

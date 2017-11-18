@@ -27,9 +27,11 @@ $(document).on('turbolinks:load', function () {
 
   var $list_master = $('#list_master')
 
-  $list_master.change(function(){
-    console.log($list_master.val())
-    $('.list_slave').val($list_master.val())
-  })
+  // $list_master.change(function(){
+    // $list_master.children().eq(2).attr('selected', 'selected')
+    // $('.list_slave').val($list_master.val())
+    // $('.list_slave').children().eq(3).attr('selected', 'selected')
+  // })
+
 
 });

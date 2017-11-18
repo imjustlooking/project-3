@@ -40,7 +40,6 @@ $(document).on('turbolinks:load', function () {
           target: '#cam_output'
         },
         decoder: {
-      // readers : ['ean_reader','ean_8_reader','code_39_reader','code_39_vin_reader','codabar_reader','upc_reader','upc_e_reader','code_128_reader'],
           readers: ['ean_reader'],
           config: {}
         }
@@ -101,19 +100,9 @@ $(document).on('turbolinks:load', function () {
 
         return keyArray[valueIndex]
       }
-      // keyByValue(max_object_value);
-      // Object.prototype.getKey = function (value) {
-      //   var object = this
-      //   for (var key in object) {
-      //     if (object[key] === value) return key
-      //   }
-      // }
       if (maxFrequency > 5) {
-      // var mostScannedBarcode = results.getKey(maxFrequency)
       var mostScannedBarcode = keyByValue(maxFrequency)
-      // console.log('max', mostScannedBarcode)
       $('#barcodeField').val(mostScannedBarcode)
-      // setTimeout(function(){ $('#barcodeSubmit').click()}, 100)
       setTimeout(function(){
         $('#barcodeSubmit').click()
         console.log('click')}, 100)
