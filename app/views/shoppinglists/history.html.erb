@@ -1,7 +1,6 @@
 
 <h1>Transaction History</h1>
-<%# <p> Here are your past purchases with Smart Mart. <br> To re-order a list, click on the corresponding button beside it. </p>
-<br> %>
+
 <%= link_to "Back to shopping", stocks_path, class: "btn sitebutton" %>
 <% @shoplists.each do |shoplist| %>
 <% if shoplist.paid_on %>

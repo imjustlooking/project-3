@@ -12,7 +12,6 @@ class ShoppinglistsController < ApplicationController
     @new_shoppinglist = current_user.shoppinglists.create(params.require(:shoppinglist).permit(:name_shoppinglist))
     flash[:info] = "List: #{@new_shoppinglist.name_shoppinglist} created. Fill up your shopping list!"
     redirect_to stocks_path
-    # render :json => current_user.shoppinglists
   end
   def new
     @new_shoppinglist = Shoppinglist.new

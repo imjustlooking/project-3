@@ -12,5 +12,8 @@
 
   <%= f.label 'Stock barcode:' %>
   <%= f.text_field :barcode, placeholder: @stock.barcode, class:'form-control' %>
+
+  <%= f.label 'Stock image link:' %>
+  <%= f.text_field :img, placeholder: @stock.img, class:'form-control' %>
   <%= submit_tag "Save changes", class:"btn btn-primary" %>
 <% end %>

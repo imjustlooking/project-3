@@ -4,6 +4,5 @@
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.label('Shopping List name:') %>
   <%= f.text_field :name_shoppinglist %>
-  <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
 <% end %>

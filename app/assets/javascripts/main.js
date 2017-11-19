@@ -1,16 +1,5 @@
 $(document).on('turbolinks:load', function () {
-
-  $('.flipping').on('click', function() {
-
-    var $card = $(this).closest('.card-container')
-    console.log($card)
-    if($card.hasClass('hover')){
-      $card.removeClass('hover')
-    } else {
-      $card.addClass('hover')
-    }
-  })
-
+  // whole js file for barcode feature: camera output & quagga API input under stocks show view
   var results = {}
   var video = $('#cam_output')[0]
   var constraints = { video: true }
@@ -49,15 +38,14 @@ $(document).on('turbolinks:load', function () {
         console.log(err)
         return
       }
-      console.log('Initialization finished. Ready to start')
-      for (var key in results) { // to empty the results object
+      for (var key in results) { // to empty the results object each initialization
         delete results[key]
       }
       Quagga.start()
     })
   }
 
-  Quagga.onProcessed(function (result) {
+  Quagga.onProcessed(function (result) { // this is given by default from the API, asks canvas element to plot on-screen the barcode area (visual indicator for users)
     var drawingCtx = Quagga.canvas.ctx.overlay
     var drawingCanvas = Quagga.canvas.dom.overlay
 
@@ -81,57 +69,46 @@ $(document).on('turbolinks:load', function () {
     }
   })
 
-    Quagga.onDetected(function (result) {
-      var code1 = result.codeResult.code
-      if (results[code1] === undefined) results[code1] = 1
-      else results[code1] += 1
+  Quagga.onDetected(function (result) { // store barcodes in an object 'results'
+    var code1 = result.codeResult.code
+    if (results[code1] === undefined) results[code1] = 1
+    else results[code1] += 1
 
-      console.log(results)
-      var frequency = Object.values(results)
-      var totalScans = frequency.reduce(function (a, b) {
-        return a + b
-      })
-      var maxFrequency = Math.max.apply(null, frequency)
+    var frequency = Object.values(results) // frequency of scanned barcode recorded
+    // var totalScans = frequency.reduce(function (a, b) { // could be used to filter for an output w/ X% frequency
+    //   return a + b
+    // })
+    var maxFrequency = Math.max.apply(null, frequency)
 
-      function keyByValue (value) {
-        var keyArray = Object.keys(results)
-        var valueArray = Object.values(results)
-        var valueIndex = valueArray.indexOf(value)
+    function keyByValue (value) {
+      var keyArray = Object.keys(results)
+      var valueArray = Object.values(results)
+      var valueIndex = valueArray.indexOf(value)
 
-        return keyArray[valueIndex]
-      }
-      if (maxFrequency > 5) {
+      return keyArray[valueIndex]
+    }
+    if (maxFrequency > 5) {
       var mostScannedBarcode = keyByValue(maxFrequency)
       $('#barcodeField').val(mostScannedBarcode)
-      setTimeout(function(){
+      setTimeout(function () {
         $('#barcodeSubmit').click()
-        console.log('click')}, 100)
-
-      }
-    })
-
-  $('#stopScan').click(function () {
-    console.log('stop')
-    Quagga.stop()
+      }, 100)
+    }
   })
+  // used for Quagga input start and stop, feature can be implemented if necessary
+  // $('#stopScan').click(function () {
+  //   Quagga.stop()
+  // })
+  // $('#startScan').click(function () {
+  //   barcodeStart()
+  // })
 
-  $('#startScan').click(function () {
-    console.log('start')
-    barcodeStart()
-  })
-
-  var camSwitch = 0
   if ($('#cam_output').length > 0) {
-    console.log('trying to turn on')
     camstart('begin')
     barcodeStart()
-    camSwitch = 1
   }
-  if (camSwitch === 0 && $('#cam_output').length === 0) {
-    console.log('trying to turn off_constraints')
+  if ($('#cam_output').length === 0) {
     Quagga.stop()
     stream.getTracks().forEach(function (track) { track.stop() })
   }
-  console.log('length is',$('#cam_output').length)
-  console.log('camSwitch', camSwitch)
 })

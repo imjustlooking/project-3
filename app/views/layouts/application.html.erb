@@ -74,18 +74,11 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= raw(value) %></div>
       <% end %>
-      <pre>
+      <!-- <pre>
   <%= params %>
-</pre>
+</pre> -->
     <%= yield %>
     </div>
-<%#      <footer class="navbar fixed-bottom navbar-expand navbar-dark bg-dark">
- %>       <%# <footer class="navbar navbar-expand-lg navbar-light sitebutton">
-
-        <div class="container-fluid p-0 p-md-2">
-          <p class="text-center">Put together by <a href="https://github.com/imjustlooking" target="_blank" rel="noopener">Gab's angels</a>, with <a href="http://getbootstrap.com/" target="_blank">Bootstrap 4</a> </p>
-        </div>
-    </footer> %>
 <br>
     <footer class="footer">
       <div class="container">

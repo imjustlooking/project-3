@@ -1,13 +1,10 @@
 <h1>Your shopping lists</h1>
-<%# <p> Here are your pending grocery lists.
-  To preview the enclosed items, scroll through the preview box under each list.<br>
-  Click on the titles to edit/remove quantities, and proceed to checkout.</p> %>
+
 <%= link_to "Start shopping", stocks_path %>
 
 <%= form_for @new_shoppinglist, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.label('New list:') %>
   <%= f.text_field :name_shoppinglist, :maxlength => 50 %>
-  <%# <%= f.text_area :body, size: "60x12" %>
   <%= f.submit "Create" %>
   <br><br>
 <% end %>
@@ -15,7 +12,6 @@
 <div class="row">
   <% @shoplists.each do |shoplist| %>
   <% unless shoplist.paid_on %>
-<<<<<<< HEAD
   <div class="col-md-4 col-sm-6">
              <div class="card-container manual-flip">
                 <div class="card">
@@ -69,7 +65,6 @@
 
 
 
-=======
   <div class="card-deck col-sm-3">
     <div class="card text-center">
       <div class="card-block">
@@ -93,6 +88,5 @@
       </div>
     </div>
   </div>
->>>>>>> c05ccd8ad2eddf62ec008c9550b2bf8e3bed7675
   <% end %>
   <% end %>

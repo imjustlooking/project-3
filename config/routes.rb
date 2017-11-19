@@ -24,15 +24,12 @@ Rails.application.routes.draw do
   collection do
     post :master_list, :as => :master_list
   end
-end
+  end
   #custom routes for barcode scanning page
   get '/stocks/show', to: 'stocks#show'
   get '/stocks/?category_type=:id', to: 'stocks#show', as: 'stocks_type'
   #item routes
   resources :items
-  # post '/items/create', to: 'items#create'
-  # get 'items/create'
-  # get '/items/add', to: 'items#create'
 
   #charges routes
   resources :charges, only: [:new, :create]

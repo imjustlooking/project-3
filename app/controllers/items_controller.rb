@@ -16,27 +16,17 @@ class ItemsController < ApplicationController
     @item.shoppinglist_id = shoppinglist.id
     @item_exists = Item.where(:shoppinglist_id => params[:item][:shoppinglist_id], :stock_id => params[:item][:stock_id]).first
     if (@item_exists).present?
-      # p "found a duplicate id for #{@item_exists.stock.name_item}, #{@item_exists.id}, with #{@item_exists.quantity_ordered} orders"
       @item_exists.quantity_ordered += params[:item][:quantity_ordered].to_i
-      # p "found a duplicate id, #{@item_exists.id}, with #{@item_exists.quantity_ordered} orders"
       @item_exists.save
       flash[:success] = "Increased quantity of #{@item_exists.stock.name_item} to #{@item_exists.quantity_ordered} units in #{view_context.link_to(@item_exists.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item_exists.shoppinglist_id))}.".html_safe
       redirect_back(fallback_location: root_path)
-      # redirect_to stocks_path
     else
-      # p 'found nothing'
       if @item.save
         flash[:success] = "Added #{@item.quantity_ordered} units of #{@item.stock.name_item} to #{view_context.link_to(@item.shoppinglist.name_shoppinglist, user_shoppinglist_path(:user_id => current_user.id, :id => @item.shoppinglist_id))}.".html_safe
         redirect_back(fallback_location: root_path)
-        # redirect_to stocks_path
       else
-        # render json: {
-        #   shoppinglist: shoppinglist,
-        #   errors: @item.errors.messages
-        # }
+
         flash[:danger] = 'Item add failed. Please check if you have selected a valid shopping list.'
-        # you guys can change the alert tag accordingly: https://getbootstrap.com/docs/4.0/components/alerts/
-        # redirect_to stocks_path
         redirect_back(fallback_location: root_path)
 
       end
