@@ -3,6 +3,9 @@
 <%# <button id ="startScan" type="button">Start input</button>
 <button id="stopScan" type="button">Stop input</button> %>
 <p> The camera (if enabled), automatically starts scanning for a barcode. <br>You will be redirected upon any database matches. Please refresh if you are scanning a different item. <br><small> Please load this site from a HTTPS if no camera popup shows. </small> </p>
+<%= video_tag "barcodeDemo.mp4", :size => "320x240", :controls => true %>
+<p> View above for demonstration on how it works for wrong and right cases.</a>
+
 <%= form_tag(stocks_path, method: :get) do %>
 <%= label_tag 'barcode' %>
 <%= hidden_field_tag :button , "searching" %>
