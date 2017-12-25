@@ -1,6 +1,7 @@
 # Project 3: Smartest Mart
 
-Start your shopping experience with us : https://smartestmart.herokuapp.com
+Start your shopping experience with us : https://smartermart.herokuapp.com
+Best viewed on Chrome. 
 
 
 ## What you need to make it work..
